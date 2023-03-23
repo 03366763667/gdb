@@ -33,18 +33,20 @@
                     <td>${{$shipping->price}}</td>
                     <td>
                         @if($shipping->status=='active')
-                            <span class="badge badge-success">{{$shipping->status}}</span>
+                            <span class="badgecstm {{$shipping->status}}">{{$shipping->status}}</span>
                         @else
-                            <span class="badge badge-warning">{{$shipping->status}}</span>
+                            <span class="badgecstm {{$shipping->status}}">{{$shipping->status}}</span>
                         @endif
                     </td>
                     <td>
-                        <a href="{{route('shipping.edit',$shipping->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
-                        <form method="POST" action="{{route('shipping.destroy',[$shipping->id])}}">
-                          @csrf
-                          @method('delete')
-                              <button class="btn btn-danger btn-sm dltBtn" data-id="{{$shipping->id}}" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                        </form>
+                        <div class="action-btns">
+                            <a href="{{route('shipping.edit',$shipping->id)}}" class="btn btn-icon" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
+                            <form method="POST" action="{{route('shipping.destroy',[$shipping->id])}}">
+                                @csrf
+                                @method('delete')
+                                <button class="btn btn-icon" data-id="{{$shipping->id}}" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                            </form>
+                        </div>
                     </td>
                     {{-- Delete Modal --}}
                     {{-- <div class="modal fade" id="delModal{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="#delModal{{$user->id}}Label" aria-hidden="true">

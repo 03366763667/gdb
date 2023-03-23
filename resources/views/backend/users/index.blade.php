@@ -35,27 +35,33 @@
                     <td>{{$user->email}}</td>
                     <td>
                         @if($user->photo)
-                            <img src="{{$user->photo}}" class="img-fluid rounded-circle" style="max-width:50px" alt="{{$user->photo}}">
+                            <div class="userCustomImg">
+                                <img src="{{$user->photo}}" class="img-fluid" alt="{{$user->photo}}">
+                            </div>
                         @else
-                            <img src="{{asset('backend/img/avatar.png')}}" class="img-fluid rounded-circle" style="max-width:50px" alt="avatar.png">
+                            <div class="userCustomImg">
+                                <img src="{{asset('backend/img/avatar.png')}}" class="img-fluid" alt="avatar.png">
+                            </div>
                         @endif
                     </td>
                     <td>{{(($user->created_at)? $user->created_at->diffForHumans() : '')}}</td>
                     <td>{{$user->role}}</td>
                     <td>
                         @if($user->status=='active')
-                            <span class="badge badge-success">{{$user->status}}</span>
+                            <span class="badgecstm {{$user->status}}">{{$user->status}}</span>
                         @else
-                            <span class="badge badge-warning">{{$user->status}}</span>
+                            <span class="badgecstm {{$user->status}}">{{$user->status}}</span>
                         @endif
                     </td>
                     <td>
-                        <a href="{{route('users.edit',$user->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
-                    <form method="POST" action="{{route('users.destroy',[$user->id])}}">
-                      @csrf
-                      @method('delete')
-                          <button class="btn btn-danger btn-sm dltBtn" data-id={{$user->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                        </form>
+                        <div class="action-btns">
+                            <a href="{{route('users.edit',$user->id)}}" class="btn btn-icon" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
+                            <form method="POST" action="{{route('users.destroy',[$user->id])}}">
+                                @csrf
+                                @method('delete')
+                                <button class="btn btn-icon" data-id="{{$user->id}}" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                            </form>
+                        </div>
                     </td>
                     {{-- Delete Modal --}}
                     {{-- <div class="modal fade" id="delModal{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="#delModal{{$user->id}}Label" aria-hidden="true">
