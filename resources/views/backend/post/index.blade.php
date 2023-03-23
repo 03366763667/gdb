@@ -53,22 +53,24 @@
                     </td>
                     <td>
                         @if($post->status=='active')
-                            <span class="badge badge-success">{{$post->status}}</span>
+                            <span class="badgecstm {{$post->status}}">{{$post->status}}</span>
                         @else
-                            <span class="badge badge-warning">{{$post->status}}</span>
+                            <span class="badgecstm {{$post->status}}">{{$post->status}}</span>
                         @endif
                     </td>
                     <td>
-                        <a href="{{route('post.edit',$post->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <form method="POST" action="{{route('post.destroy',[$post->id])}}">
-                        @csrf
-                        @method('delete')
-                            <button class="btn btn-danger btn-sm dltBtn" data-id="{{$post->id}}" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </form>
+                        <div class="action-btns">
+                            <a href="{{route('post.edit',$post->id)}}" class="btn btn-icon" data-toggle="tooltip" title="edit" data-placement="bottom">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <form method="POST" action="{{route('post.destroy',[$post->id])}}">
+                                @csrf
+                                @method('delete')
+                                <button class="btn btn-icon" data-id="{{$post->id}}" data-toggle="tooltip" data-placement="bottom" title="Delete">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
             @endforeach
