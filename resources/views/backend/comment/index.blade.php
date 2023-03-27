@@ -36,18 +36,20 @@
                     <td>{{$comment->created_at->format('M d D, Y g: i a')}}</td>
                     <td>
                         @if($comment->status=='active')
-                          <span class="badge badge-success">{{$comment->status}}</span>
+                          <span class="badgecstm {{$comment->status}}">{{$comment->status}}</span>
                         @else
-                          <span class="badge badge-warning">{{$comment->status}}</span>
+                          <span class="badgecstm {{$comment->status}}">{{$comment->status}}</span>
                         @endif
                     </td>
                     <td>
-                        <a href="{{route('comment.edit',$comment->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
-                        <form method="POST" action="{{route('comment.destroy',[$comment->id])}}">
-                          @csrf
-                          @method('delete')
-                              <button class="btn btn-danger btn-sm dltBtn" data-id={{$comment->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                        </form>
+                        <div class="action-btns">
+                            <a href="{{route('comment.edit',$comment->id)}}" class="btn btn-icon" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
+                            <form method="POST" action="{{route('comment.destroy',[$comment->id])}}">
+                                @csrf
+                                @method('delete')
+                                <button class="btn btn-icon" data-id="{{$comment->id}}" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
             @endforeach
