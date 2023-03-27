@@ -48,18 +48,20 @@
                     <td>{{$review->created_at->format('M d D, Y g: i a')}}</td>
                     <td>
                         @if($review->status=='active')
-                          <span class="badge badge-success">{{$review->status}}</span>
+                          <span class="badgecstm {{$review->status}}">{{$review->status}}</span>
                         @else
-                          <span class="badge badge-warning">{{$review->status}}</span>
+                          <span class="badgecstm {{$review->status}}">{{$review->status}}</span>
                         @endif
                     </td>
                     <td>
-                        <a href="{{route('review.edit',$review->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
-                        <form method="POST" action="{{route('review.destroy',[$review->id])}}">
-                          @csrf
-                          @method('delete')
-                              <button class="btn btn-danger btn-sm dltBtn" data-id={{$review->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                        </form>
+                        <div class="action-btns">
+                            <a href="{{route('review.edit',$review->id)}}" class="btn btn-icon" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
+                            <form method="POST" action="{{route('review.destroy',[$review->id])}}">
+                                @csrf
+                                @method('delete')
+                                <button class="btn btn-icon" data-id="{{$review->id}}" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
             @endforeach
