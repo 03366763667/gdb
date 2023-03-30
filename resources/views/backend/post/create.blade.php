@@ -71,7 +71,7 @@
           <label for="inputPhoto" class="col-form-label">Photo <span class="text-danger">*</span></label>
           <div class="input-group">
               <span class="input-group-btn">
-                  <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                  <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn">
                   <i class="fa fa-picture-o"></i> Choose
                   </a>
               </span>
@@ -82,7 +82,7 @@
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
-        
+
         <div class="form-group">
           <label for="status" class="col-form-label">Status <span class="text-danger">*</span></label>
           <select name="status" class="form-control">
