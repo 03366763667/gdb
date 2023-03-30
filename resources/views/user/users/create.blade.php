@@ -35,7 +35,7 @@
         <label for="inputPhoto" class="col-form-label">Photo</label>
         <div class="input-group">
             <span class="input-group-btn">
-                <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn">
                 <i class="fa fa-picture-o"></i> Choose
                 </a>
             </span>
@@ -46,7 +46,7 @@
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
-        @php 
+        @php
         $roles=DB::table('users')->select('role')->get();
         @endphp
         <div class="form-group">

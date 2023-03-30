@@ -6,7 +6,7 @@
     <h5 class="card-header">Edit Post</h5>
     <div class="card-body">
     <form method="post" action="{{route('settings.update')}}">
-        @csrf 
+        @csrf
         {{-- @method('PATCH') --}}
         {{-- {{dd($data)}} --}}
         <div class="form-group">
@@ -27,7 +27,7 @@
           <label for="inputPhoto" class="col-form-label">Photo <span class="text-danger">*</span></label>
           <div class="input-group">
               <span class="input-group-btn">
-                  <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                  <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn">
                   <i class="fa fa-picture-o"></i> Choose
                   </a>
               </span>

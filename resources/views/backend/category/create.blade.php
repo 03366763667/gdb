@@ -25,7 +25,7 @@
 
         <div class="form-group">
           <label for="is_parent">Is Parent</label><br>
-          <input type="checkbox" name='is_parent' id='is_parent' value='1' checked> Yes                        
+          <input type="checkbox" name='is_parent' id='is_parent' value='1' checked> Yes
         </div>
         {{-- {{$parent_cats}} --}}
 
@@ -43,7 +43,7 @@
           <label for="inputPhoto" class="col-form-label">Photo</label>
           <div class="input-group">
               <span class="input-group-btn">
-                  <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                  <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn">
                   <i class="fa fa-picture-o"></i> Choose
                   </a>
               </span>
@@ -55,7 +55,7 @@
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
-        
+
         <div class="form-group">
           <label for="status" class="col-form-label">Status <span class="text-danger">*</span></label>
           <select name="status" class="form-control">
