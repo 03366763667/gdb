@@ -38,7 +38,6 @@
 						<div class="single-footer links">
 							<h4>Customer Service</h4>
 							<ul>
-								<li><a href="#">Payment Methods</a></li>
 								<li><a href="#">Money-back</a></li>
 								<li><a href="#">Returns</a></li>
 								<li><a href="#">Shipping</a></li>
@@ -60,7 +59,7 @@
 								</ul>
 							</div>
 							<!-- End Single Widget -->
-							<div class="sharethis-inline-follow-buttons"></div>
+{{--							<div class="sharethis-inline-follow-buttons"></div>--}}
 						</div>
 						<!-- End Single Widget -->
 					</div>
@@ -75,11 +74,6 @@
 						<div class="col-lg-6 col-12">
 							<div class="left">
 								<p>Copyright © {{date('Y')}} GDB  -  All Rights Reserved.</p>
-							</div>
-						</div>
-						<div class="col-lg-6 col-12">
-							<div class="right">
-								<img src="{{asset('backend/img/payments.png')}}" alt="#">
 							</div>
 						</div>
 					</div>
@@ -98,7 +92,7 @@
 	<!-- Bootstrap JS -->
 	<script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
 	<!-- Color JS -->
-	<script src="{{asset('frontend/js/colors.js')}}"></script>
+{{--	<script src="{{asset('frontend/js/colors.js')}}"></script>--}}
 	<!-- Slicknav JS -->
 	<script src="{{asset('frontend/js/slicknav.min.js')}}"></script>
 	<!-- Owl Carousel JS -->

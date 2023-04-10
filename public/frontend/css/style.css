@@ -27,7 +27,7 @@ Version:1.0
 15. Newslatter CSS
 16. About Us CSS
 17. Team CSS
-18. Blog CSS	
+18. Blog CSS
 	+ Blog Archive
 	+ Blog Sidebar
 	+ Blog Single
@@ -365,11 +365,11 @@ Version:1.0
 	margin-right: 188px;
 }
 .header.shop .logo {
-	float: left;
-	margin-top: 35px;
+	float: none;
+    margin: 0;
 }
 .header.shop .top-contact {
-	margin-top:0px;
+	margin-top:0;
 }
 .header.shop .topbar p {
 	color: #ccc;
@@ -379,7 +379,7 @@ Version:1.0
 }
 /* Topbar Left Nav */
 .header.shop .left-nav{
-	
+
 }
 .header.shop .top-left .list-main li:first-child{
 	padding-left:0;
@@ -546,7 +546,7 @@ Version:1.0
 	width: 70px;
 	height: 70px;
 	border-radius:0;
-	
+
 }
 .header .shopping-list .cart-img:hover img{
 	transform:scale(1.09);
@@ -622,41 +622,37 @@ Version:1.0
 .header.shop .right-nav li a {
 	color: #333;
 }
-.header.shop .logo {
-	float: left;
-	margin: 19px 0 0;
-}
 .header.shop .top-contact {
-	margin-top:0px;
+	margin-top:0;
 }
 /* Header Middle */
 .header.shop .search-bar-top {
 	text-align: center;
-	margin-top: 10px;
 }
 .header.shop .search-bar {
 	margin-top: 33px;
 	width: 460px;
 	height: 40px;
-	display: inline-block;
 	background: #fff;
 	position: relative;
+    display: flex;
+    align-items: center;
 }
 .header.shop .search-bar {
 	width: 535px;
-	height: 50px;
-	display: inline-block;
+	height: 40px;
 	background: #fff;
 	position: relative;
 	margin: 0;
-	line-height: 45px;
+	line-height: 38px;
 	border-radius: 5px;
 	border: 1px solid #ececec;
+    margin: 0 auto;
 }
 .header.shop .nice-select {
 	clear: initial;
 	margin: 0;
-	height: 48px;
+	height: 40px;
 	width: 150px;
 	border: none;
 	text-align: center;
@@ -664,7 +660,7 @@ Version:1.0
 	text-transform: capitalize;
 	padding: 0 0 0 20px;
 	border-right: 1px solid #eee;
-	line-height: 50px;
+	line-height: 40px;
 	font-size: 14px;
 	font-weight: 400;
 }
@@ -680,7 +676,7 @@ Version:1.0
 }
 .header.shop .nice-select .list li {
 	color: #666;
-	border-radius: 0px;
+	border-radius: 0;
 	font-size: 14px;
 	font-weight: 400;
 }
@@ -690,8 +686,8 @@ Version:1.0
 }
 .header.shop .search-bar form {
 	display: inline-block;
-	float: left;
-	width: 260px;
+	/*float: left;*/
+	/*width: 260px;*/
 }
 .header.shop .search-bar input {
 	height: 48px;
@@ -705,16 +701,16 @@ Version:1.0
 	width: 328px;
 }
 .header.shop .search-bar .btnn {
-	height: 50px;
-	line-height: 53px;
-	width: 62px;
+	height: 40px;
+	line-height: 40px;
+	width: 40px;
 	text-align: center;
-	font-size: 18px;
+	font-size: 16px;
 	color: #fff;
 	background: #333333;
 	position: absolute;
-	right: -2px;
-	top: -1px;
+	right: 0;
+	top: 0;
 	border: none;
 	border-radius: 0 5px 5px 0;
 	-webkit-transition: all 0.4s ease;
@@ -1144,7 +1140,7 @@ Version:1.0
 .header.sticky .all-category{}
 .header.sticky .all-category h3{
 	cursor:pointer;
-	
+
 }
 .header.sticky .all-category .main-category{
 	opacity:0;
@@ -1207,7 +1203,7 @@ Version:1.0
 
 /*======================================
    Hero Area CSS
-========================================*/ 
+========================================*/
 .hero-slider {
 	background: #fff;
 	overflow: hidden;
@@ -1221,7 +1217,7 @@ Version:1.0
     height: 510px;
 }
 .hero-slider .text-inner {
-	
+
 }
 .hero-slider .hero-text {
 	padding: 0 30px;
@@ -1454,7 +1450,7 @@ Version:1.0
 }
 /* Hero Area 4 */
 .hero-area4 .big-content{
-	
+
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -1523,11 +1519,11 @@ Version:1.0
 
 /*======================================
    End Hero Area CSS
-========================================*/ 
+========================================*/
 
 /*======================================
    Start Small Banner CSS
-========================================*/ 
+========================================*/
 .small-banner{
 	padding:30px 0;
 	padding-bottom:0;
@@ -1582,11 +1578,11 @@ Version:1.0
 }
 /*======================================
    End Small Banner CSS
-========================================*/ 
+========================================*/
 
 /*======================================
    Start Mid Banner CSS
-========================================*/ 
+========================================*/
 .midium-banner{
 	padding:0;
 }
@@ -1648,7 +1644,7 @@ Version:1.0
 }
 /*======================================
    End Mid Banner CSS
-========================================*/ 
+========================================*/
 
 /*======================================
    Start Most Popular CSS
@@ -1734,7 +1730,7 @@ Version:1.0
 }
 .product-area .nav-tabs li:last-child a{
 	border-color:transparent;
-} 
+}
 .product-area .nav-tabs li a i{
 	margin-right:10px;
 }
@@ -2142,7 +2138,7 @@ Version:1.0
 	margin-top: 10px;
 }
 .shop-sidebar .categor-list li{
-	
+
 }
 .shop-sidebar .categor-list li {
 	margin-bottom: 10px;
@@ -2613,7 +2609,7 @@ Version:1.0
 	border-color:transparent;
 }
 .shop.single .tab-single {
-	
+
 }
 .shop.single .single-des {
 	margin-top:35px;
@@ -2622,7 +2618,7 @@ Version:1.0
 	margin-bottom:15px;
 	font-weight:500;
 	font-size:22px;
-	
+
 }
 .shop.single .single-des ul{}
 .shop.single .single-des ul li {
@@ -2991,7 +2987,7 @@ Version:1.0
 	transform:rotate(360deg);
 }
 .shopping-cart .border{
-	
+
 }
 .shopping-cart .table .remove-icon{
 	font-size:16px;
@@ -3148,7 +3144,7 @@ Version:1.0
 	padding-left: 100px;
 }
 .shopping-cart .total-amount .right ul{
-	
+
 }
 .shopping-cart .total-amount .right ul li {
 	font-size: 15px;
@@ -3234,7 +3230,7 @@ Version:1.0
 	background: #F6F7FB;
 }
 .shop.checkout .form .form-group input:hover{
-	
+
 }
 .shop.checkout .nice-select {
 	width: 100%;
@@ -3673,7 +3669,7 @@ Version:1.0
 	margin-top:40px;
 	width: 80px;
 	display:inline-block;
-	
+
 }
 .cown-down .content .cdown {
 	text-align: center;
@@ -3932,7 +3928,7 @@ Version:1.0
 .about-us .about-img img{
 	height:100%;
 	width:100%;
-	
+
 }
 /*=============================
 	End About US CSS
@@ -3940,7 +3936,7 @@ Version:1.0
 
 /*======================================
   10. Start Team CSS
-========================================*/  
+========================================*/
 .team{
 	background:#F6F7FB;
 }
@@ -4003,7 +3999,7 @@ Version:1.0
 }
 /*======================================
   End Team CSS
-========================================*/ 
+========================================*/
 
 /*======================================
    Start Shop Blog CSS
@@ -4148,7 +4144,7 @@ Version:1.0
 	margin-top: 15px;
 }
 .main-sidebar .categor-list li{
-	
+
 }
 .main-sidebar .categor-list li {
 	margin-bottom: 10px;
@@ -4194,7 +4190,7 @@ Version:1.0
 	border:none;
 }
 .main-sidebar .single-post .image {
-	
+
 }
 .main-sidebar .single-post .image img{
 	float: left;
@@ -4262,7 +4258,7 @@ Version:1.0
 }
 /* Blog Newslatter CSS */
 .main-sidebar .newsletter{
-	
+
 }
 .main-sidebar .newsletter .letter-inner {
 	position:relative;
@@ -4461,7 +4457,7 @@ Version:1.0
 	background:#F7941D;
 }
 .blog-single .comments{
-	
+
 }
 .blog-single .comments .single-comment {
 	position: relative;
@@ -4480,7 +4476,7 @@ Version:1.0
 	left: 0;
 }
 .blog-single .single-comment .content {
-	
+
 }
 .blog-single .single-comment .content h4 {
 	color: #333;
@@ -4890,7 +4886,7 @@ Version:1.0
 }
 /* Copyright */
 .footer .copyright{
-	
+
 }
 .footer .copyright .inner{
 	border-top:1px solid #eeeeee3d;

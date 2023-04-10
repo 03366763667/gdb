@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use NunoMaduro\Collision\Provider;
 use App\Models\Cart;
 use App\Models\Product;
-use DB;
+use Illuminate\Support\Facades\DB;
 class PaypalController extends Controller
 {
     public function payment()
@@ -45,9 +45,17 @@ class PaypalController extends Controller
         // return session()->get('id');
         $provider = new ExpressCheckout;
 
+//        dd($provider);
+
         $response = $provider->setExpressCheckout($data);
 
-        return redirect($response['paypal_link']);
+        $response = $provider->setExpressCheckout($data, true);
+
+        if($response['paypal_link'] == null){
+            // custom redirection
+            return redirect()->back()->with(['error'=>'paypal link no set']);
+}
+        return redirect()->away($response['paypal_link']);
     }
 
     /**
