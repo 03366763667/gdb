@@ -319,7 +319,7 @@ big {
 	color:#F7941D;
 }
 /*=============================
-	Start Demos CSS 
+	Start Demos CSS
 ===============================*/
 .demo-section{
 	width: 100%;
@@ -458,7 +458,7 @@ big {
 	color:#755ce4;
 }
 /*=============================
-	/End Demos CSS 
+	/End Demos CSS
 ===============================*/
 
 /* Preloader Animaion */
@@ -493,7 +493,7 @@ big {
 	--uiPreloaderSize: var(--cpPreloaderSize, 80px);
 	font-size: 70px;
 }
-.cp-preloader-inner::after, 
+.cp-preloader-inner::after,
 .cp-preloader-inner::before {
 	content: "";
 	width: 7.5%;
@@ -616,28 +616,6 @@ input[type="submit"] {
 	background: #e6e6e6;
 	color: rgba(0, 0, 0, 0.8);
 	line-height: 1;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="url"],
-input[type="password"],
-input[type="search"],
-input[type="number"],
-input[type="tel"],
-input[type="range"],
-input[type="date"],
-input[type="month"],
-input[type="week"],
-input[type="time"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="color"],
-textarea {
-	color: #666;
-	border: 1px solid #ccc;
-	border-radius: 3px;
-	padding: 3px;
 }
 
 input[type="text"]:focus,
@@ -1664,7 +1642,7 @@ object {
 }
 .modal .owl-carousel .owl-controls .owl-nav .owl-prev{
 	left:0;
-	
+
 }
 .modal .owl-carousel .owl-controls .owl-nav .owl-next{
 	right:0;
@@ -1791,7 +1769,7 @@ object {
 	/* display: block; */
 }
 .default-social ul li a i {
-  
+
 }
 .default-social ul li a:hover {
   color: #F7941D;

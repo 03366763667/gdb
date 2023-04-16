@@ -10,7 +10,7 @@
   <h5 class="card-header">Notifications</h5>
   <div class="card-body">
     @if(count(Auth::user()->Notifications)>0)
-    <table class="table  table-hover admin-table" id="notification-dataTable">
+    <table class="table table-bordered" id="notification-dataTable">
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -22,17 +22,19 @@
       <tbody>
         @foreach ( Auth::user()->Notifications as $notification)
 
-        <tr class="@if($notification->unread()) bg-light border-left-light @else border-left-success @endif">
+        <tr>
           <td scope="row">{{$loop->index +1}}</td>
           <td>{{$notification->created_at->format('F d, Y h:i A')}}</td>
           <td>{{$notification->data['title']}}</td>
           <td>
-            <a href="{{route('admin.notification', $notification->id) }}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="view" data-placement="bottom"><i class="fas fa-eye"></i></a>
-            <form method="POST" action="{{ route('notification.delete', $notification->id) }}">
-              @csrf
-              @method('delete')
-                  <button class="btn btn-danger btn-sm dltBtn" data-id={{$notification->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
-            </form>
+              <div class="action-btns">
+                  <a href="{{route('admin.notification', $notification->id) }}" class="btn btn-icon" data-toggle="tooltip" title="view" data-placement="bottom"><i class="fas fa-eye"></i></a>
+                  <form method="POST" action="{{ route('notification.delete', $notification->id) }}">
+                      @csrf
+                      @method('delete')
+                      <button class="btn btn-icon" data-id="{{$notification->id}}" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                  </form>
+              </div>
           </td>
         </tr>
 
