@@ -81,7 +81,7 @@ a.btn.btn-primary {
     border-spacing: 0;
 }
 .table.dataTable{
-    margin: 0 !important;
+    margin: 0 0 20px!important;
 }
 .table thead {
     background: #FCFCFD;
@@ -127,23 +127,37 @@ a.btn.btn-primary {
 .action-btns {
     display: flex;
 }
+.action-btns form {
+    margin-left: 8px;
+}
 .btn-icon{
     width: 30px;
     height: 30px;
-    border-radius: 6px;
+    border-radius: 100%;
     padding: 0 0;
-    background-color: rgba(0,0,0,0);
+    background-color: #D5D5E261;
     text-align: center;
-    border: 1px solid rgba(0,0,0,0);
+    border: 1px solid #D5D5E261;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 12px;
     color: #8E90AA !important;
+    transition: all .3s ease;
 }
 .btn-icon:hover {
     background-color: #FAFAFC;
+    transition: all .3s ease;
+}
+.action-btns form .btn-icon:hover{
+    background: #EE4723;
+    border-color: #EE4723;
+    color: #FFFFFF;
+    transition: all .3s ease;
+}
+.action-btns form .btn-icon:hover i{
+    color: #FFFFFF;
 }
 .badgecstm {
     display: inline-block;
@@ -171,7 +185,7 @@ a.btn.btn-primary {
     line-height: 1.5;
     color: #4D506B;
     padding: 0 !important;
-    margin: 16px 0 0;
+    margin: 0;
 }
 .dataTables_length {
     font-size: 13px;
@@ -204,4 +218,36 @@ a.btn.btn-primary {
 }
 span.input-group-btn a {
     background: #46B0E6;
+}
+.alert button.close{
+    position: relative;
+    top: -4px;
+}
+.pagination .page-link {
+    border: 1px solid #D5D5E2;
+    padding: 4px 16px 4px 16px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+    color: #70728F !important;
+    cursor: pointer;
+    display: inline-block;
+}
+.pagination .paginate_button{
+    margin-right: 8px;
+}
+.pagination .paginate_button:last-of-type{
+    margin-right: 0;
+}
+.pagination .paginate_button.disabled .page-link{
+    pointer-events: none;
+    background: #fff;
+    color: #D5D5E2 !important;
+    border-color: #EFF0F5;
+    box-shadow: none;
+}
+.pagination .page-item.active .page-link{
+    background: #D5D5E2;
+    border-color: #D5D5E2;
 }
