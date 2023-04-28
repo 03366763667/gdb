@@ -23,8 +23,8 @@
     <!-- Shop Login -->
     <section class="shop login section">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6 offset-lg-3 col-12">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8 col-12">
                     <div class="login-form">
                         <h2>Register</h2>
                         <p>Please register in order to checkout more quickly</p>
@@ -70,12 +70,8 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group login-btn">
-                                        <button class="btn" type="submit">Register</button>
-                                        <a href="{{route('login.form')}}" class="btn">Login</a>
-                                        OR
-                                        <a href="{{route('login.redirect','facebook')}}" class="btn btn-facebook"><i class="ti-facebook"></i></a>
-                                        <a href="{{route('login.redirect','github')}}" class="btn btn-github"><i class="ti-github"></i></a>
-                                        <a href="{{route('login.redirect','google')}}" class="btn btn-google"><i class="ti-google"></i></a>
+                                        <button class="btn customLoginBtn" type="submit">Register</button>
+                                        <a href="{{route('login.form')}}" class="btn customLoginBtn">Login</a>
                                     </div>
                                 </div>
                             </div>

@@ -124,9 +124,7 @@
                                     @csrf
                                     @foreach(Helper::postTagList('posts') as $tag)
                                         <li>
-                                            <li>
-                                                <a href="{{route('blog.tag',$tag->title)}}">{{$tag->title}} </a>
-                                            </li>
+                                            <a href="{{route('blog.tag',$tag->title)}}">{{$tag->title}} </a>
                                         </li>
                                     @endforeach
                                 </form>

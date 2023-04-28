@@ -91,6 +91,7 @@
 	<script src="{{asset('frontend/js/popper.min.js')}}"></script>
 	<!-- Bootstrap JS -->
 	<script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
+	<script src="{{asset('frontend/js/frontend-custom.js')}}"></script>
 	<!-- Color JS -->
 {{--	<script src="{{asset('frontend/js/colors.js')}}"></script>--}}
 	<!-- Slicknav JS -->
