@@ -1,6 +1,21 @@
 button:focus{
     outline: 0 !important;
 }
+.headerWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logoWrapper {
+    width: 200px;
+    margin-right: 20px;
+}
+.rightHeader {
+    width: 100px;
+}
+.SearchBarWrapper {
+    width: calc(100% - 320px);
+}
 section.small-banner.section {
     display: none;
 }
@@ -26,7 +41,7 @@ section.small-banner.section {
 .search-bar form .searchIcon {
     background: transparent;
     border: 0;
-    color: #46B0E6;
+    color: #242A41;
     font-size: 12px;
     position: absolute;
     top: 13px;
@@ -109,4 +124,86 @@ button.customTabButton.how-active1:active{
 }
 .shop-blog .shop-single-blog {
     border: 1px solid #eeeeee;
+}
+
+/* responsiveness */
+@media (max-width: 1023px){
+    .logoWrapper {
+        width: 150px;
+        margin-right: 20px;
+    }
+}
+@media (max-width: 767px){
+    .topbar .list-main {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+    .header.shop .middle-inner{
+        position: relative;
+    }
+    .headerWrapper{
+        display: block;
+        width: 100%;
+    }
+    .logoWrapper {
+        width: 100%;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .logoWrapper .logo {
+        max-width: 150px;
+    }
+    .shop.login {
+        padding: 50px 0 50px;
+    }
+    #Gslider .carousel-inner {
+        height: auto !important;
+    }
+    .about-us .about-img{
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    .header.shop .search-top {
+        display: block;
+        margin-right: 15px;
+        position: relative;
+        top: 3px;
+    }
+    .mobileHeader {
+        display: flex;
+        align-items: flex-start;
+    }
+    .header .search-top a{
+        font-size: 14px;
+    }
+    .mobileHeader .slicknav_menu .slicknav_no-text{
+        float: none;
+    }
+    .closeIcon {
+        position: absolute;
+        z-index: 1;
+        top: 10px;
+        right: 20px;
+        font-size: 10px;
+    }
+    .mobile-nav .slicknav_nav {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 74px;
+        z-index: 1;
+        padding: 10px 10px 10px;
+        border-top: 1px solid #e3e6f0;
+        background: #F6F7FB;
+        box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    }
+    .customTabButton{
+        margin-bottom: 8px;
+    }
+    .section {
+        padding: 30px 0px;
+    }
 }
