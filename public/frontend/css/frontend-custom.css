@@ -147,16 +147,20 @@ section.shop-newsletter.section {
     }
 }
 @media (max-width: 767px){
+    .top-left {
+        display: none;
+    }
     .topbar .list-main {
         display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
+    }
+    .header.shop .list-main li {
+        margin-right: 8px;
     }
     .header.shop .middle-inner{
         position: relative;
     }
     .headerWrapper{
-        display: block;
+        display: flex;
         width: 100%;
     }
     .logoWrapper {
@@ -206,7 +210,7 @@ section.shop-newsletter.section {
         position: absolute;
         width: 100%;
         left: 0;
-        top: 74px;
+        top: 37px;
         z-index: 1;
         padding: 10px 10px 10px;
         border-top: 1px solid #e3e6f0;
@@ -218,5 +222,15 @@ section.shop-newsletter.section {
     }
     .section {
         padding: 30px 0px;
+    }
+    .header .shopping{
+        z-index: auto;
+    }
+    .shopping-cart .table td {
+        padding: 10px;
+    }
+    .customTable {
+        overflow-y: hidden;
+        overflow-x: scroll;
     }
 }

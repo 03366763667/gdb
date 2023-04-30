@@ -446,9 +446,6 @@ Version:1.0
 .header.shop .search-bar-top {
 	display: none;
 }
-.header.shop .right-bar {
-	display: none;
-}
 .header .middle-inner{
 	width:100%;
 }
@@ -485,7 +482,9 @@ Version:1.0
 .header.shop .topbar .right-content {
 	text-align: left;
 	float: none;
-	margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .header.shop .search-bar {
 	width: 445px;
@@ -828,46 +827,46 @@ Version:1.0
 .shopping-summery thead {
 	display: none;
 }
-.shopping-cart .table td {
-	padding: .75rem;
-	vertical-align: top;
-	border-top: 1px solid #e9ecef;
-	display: block;
-	height: auto;
-	text-align: left !important;
-	padding-left: calc(50% + 20px) !important;
-	width: 100%;
-	position: relative;
-	padding-left: 91px;
-	margin-top: 5px;
-}
+/*.shopping-cart .table td {*/
+/*	padding: .75rem;*/
+/*	vertical-align: top;*/
+/*	border-top: 1px solid #e9ecef;*/
+/*	display: block;*/
+/*	height: auto;*/
+/*	text-align: left !important;*/
+/*	padding-left: calc(50% + 20px) !important;*/
+/*	width: 100%;*/
+/*	position: relative;*/
+/*	padding-left: 91px;*/
+/*	margin-top: 5px;*/
+/*}*/
 .shopping-cart .qty .button .btn {
 	padding: 0;
 	width: 35px;
 }
-.shopping-cart .table td::before {
-	content: attr(data-title);
-	display: block;
-	font-weight: bold;
-	position: absolute;
-	left: 0px;
-	top: 0px;
-	padding: 10px 20px;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	width: 50%;
-	height: 100%;
-	border-bottom: 1px solid #e6ebee;
-	background: #F7941D;
-	color: #fff;
-	border: none;
-}
-.shopping-cart .table td {
-	vertical-align: middle;
-	padding: 10px;
-	border-bottom: 1px solid #eee;
-}
+/*.shopping-cart .table td::before {*/
+/*	content: attr(data-title);*/
+/*	display: block;*/
+/*	font-weight: bold;*/
+/*	position: absolute;*/
+/*	left: 0px;*/
+/*	top: 0px;*/
+/*	padding: 10px 20px;*/
+/*	-webkit-box-sizing: border-box;*/
+/*	-moz-box-sizing: border-box;*/
+/*	box-sizing: border-box;*/
+/*	width: 50%;*/
+/*	height: 100%;*/
+/*	border-bottom: 1px solid #e6ebee;*/
+/*	background: #F7941D;*/
+/*	color: #fff;*/
+/*	border: none;*/
+/*}*/
+/*.shopping-cart .table td {*/
+/*	vertical-align: middle;*/
+/*	padding: 10px;*/
+/*	border-bottom: 1px solid #eee;*/
+/*}*/
 .shopping-summery thead tr th {
 	padding: 10px;
 }
@@ -1143,9 +1142,6 @@ Version:1.0
 	padding: 20px 0 30px 0;
 }
 .header.shop .search-bar-top {
-	display: none;
-}
-.header.shop .right-bar {
 	display: none;
 }
 /* Header Search */

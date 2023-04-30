@@ -21,7 +21,7 @@
                     <!-- Top Right -->
                     <div class="right-content">
                         <ul class="list-main">
-                        <li><i class="ti-location-pin"></i> <a href="{{route('order.track')}}">Track Order</a></li>
+{{--                        <li><i class="ti-location-pin"></i> <a href="{{route('order.track')}}">Track Order</a></li>--}}
                             {{-- <li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li> --}}
                             @auth
                                 @if(Auth::user()->role=='admin')
@@ -35,6 +35,29 @@
                                 <li><i class="ti-power-off"></i><a href="{{route('login.form')}}">Login /</a> <a href="{{route('register.form')}}">Register</a></li>
                             @endauth
                         </ul>
+                        <div class="mobileHeader">
+                            <!-- Search Form -->
+                            <div class="search-top">
+                                <div class="top-search">
+                                    <a href="javascript:void(0)">
+                                        <i class="ti-search"></i>
+                                    </a>
+                                </div>
+                                <!-- Search Form -->
+                                <div class="searchTop">
+                                <span class="closeIcon">
+                                    <i class="ti-close"></i>
+                                </span>
+                                    <form class="search-form">
+                                        <input type="text" placeholder="Search here..." name="search">
+                                        <button value="search" type="submit"><i class="ti-search"></i></button>
+                                    </form>
+                                </div>
+                                <!--/ End Search Form -->
+                            </div>
+                            <!--/ End Search Form -->
+                            <div class="mobile-nav"></div>
+                        </div>
                     </div>
                     <!-- End Top Right -->
                 </div>
@@ -54,29 +77,6 @@
                         <a href="{{route('home')}}"><img src="@foreach($settings as $data) {{$data->logo}} @endforeach" alt="logo"></a>
                     </div>
                     <!--/ End Logo -->
-                    <div class="mobileHeader">
-                        <!-- Search Form -->
-                        <div class="search-top">
-                            <div class="top-search">
-                                <a href="javascript:void(0)">
-                                    <i class="ti-search"></i>
-                                </a>
-                            </div>
-                            <!-- Search Form -->
-                            <div class="searchTop">
-                                <span class="closeIcon">
-                                    <i class="ti-close"></i>
-                                </span>
-                                <form class="search-form">
-                                    <input type="text" placeholder="Search here..." name="search">
-                                    <button value="search" type="submit"><i class="ti-search"></i></button>
-                                </form>
-                            </div>
-                            <!--/ End Search Form -->
-                        </div>
-                        <!--/ End Search Form -->
-                        <div class="mobile-nav"></div>
-                    </div>
                 </div>
                 <div class="SearchBarWrapper">
                     <div class="search-bar-top">

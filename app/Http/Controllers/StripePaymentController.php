@@ -65,9 +65,6 @@ class StripePaymentController extends Controller
             "description" => "Payment Success"
         ]);
 
-        dd($response);
-
-
         return redirect()->away($response);
     }
 }
