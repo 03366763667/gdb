@@ -120,7 +120,6 @@ class OrderController extends Controller
         // return $order_data['total_amount'];
         $order_data['status']="new";
         if(request('payment_method')=='paypal'){
-            dd("thereeee");
             $order_data['payment_method']='paypal';
             $order_data['payment_status']='paid';
         }
