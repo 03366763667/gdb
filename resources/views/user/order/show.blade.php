@@ -37,7 +37,7 @@
                 @elseif($order->status=='process')
                   <span class="badge badge-warning">{{$order->status}}</span>
                 @elseif($order->status=='delivered')
-                  <span class="badge badge-success">{{$order->status}}</span>
+                  <span class="badgecstm {{$order->status}}">{{$order->status}}</span>
                 @else
                   <span class="badge badge-danger">{{$order->status}}</span>
                 @endif
@@ -75,7 +75,7 @@
                     </tr>
                     <tr>
                         <td>Order Status</td>
-                        <td> : {{$order->status}}</td>
+                        <td><span class="badgecstm {{$order->status}}">{{$order->status}}</span></td>
                     </tr>
                     <tr>
                       @php
@@ -90,7 +90,7 @@
                     </tr>
                     <tr>
                       <td>Payment Method</td>
-                      <td> : @if($order->payment_method=='cod') Cash on Delivery @else Paypal @endif</td>
+                      <td> : {{$order->payment_method}}</td>
                     </tr>
                     <tr>
                         <td>Payment Status</td>

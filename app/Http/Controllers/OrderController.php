@@ -44,6 +44,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+//        dd($request->all());
         $this->validate($request,[
             'first_name'=>'string|required',
             'last_name'=>'string|required',
@@ -119,7 +120,13 @@ class OrderController extends Controller
         // return $order_data['total_amount'];
         $order_data['status']="new";
         if(request('payment_method')=='paypal'){
+            dd("thereeee");
             $order_data['payment_method']='paypal';
+            $order_data['payment_status']='paid';
+        }
+        else if(request('payment_method')=='stripe'){
+
+            $order_data['payment_method']='stripe';
             $order_data['payment_status']='paid';
         }
         else{
@@ -139,6 +146,9 @@ class OrderController extends Controller
         Notification::send($users, new StatusNotification($details));
         if(request('payment_method')=='paypal'){
             return redirect()->route('payment')->with(['id'=>$order->id]);
+        }
+        else if(request('payment_method')=='stripe'){
+            return redirect()->route('stripe')->with(['id'=>$order->id]);
         }
         else{
             session()->forget('cart');

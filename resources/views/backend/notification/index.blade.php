@@ -42,7 +42,7 @@
       </tbody>
     </table>
     @else
-      <h2>Notifications Empty!</h2>
+      <h6 style="margin: 0">Notifications Empty!</h6>
     @endif
   </div>
 </div>

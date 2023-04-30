@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StripePaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,6 +93,9 @@ Route::get('cancel', 'PayPalController@cancel')->name('payment.cancel');
 Route::get('payment/success', 'PayPalController@success')->name('payment.success');
 
 
+
+Route::get('stripe', 'StripePaymentController@stripe')->name('stripe');
+Route::post('stripe', 'StripePaymentController@stripePost')->name('stripe.post');
 
 // Backend section start
 

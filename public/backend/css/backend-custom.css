@@ -251,3 +251,46 @@ span.input-group-btn a {
     background: #D5D5E2;
     border-color: #D5D5E2;
 }
+form.user .form-control-user {
+    font-size: 14px;
+    border-radius: 6px;
+    padding: 10px 12px 10px;
+    height: 45px;
+}
+.form-control:focus{
+    box-shadow: none;
+    border-color: #46B0E6;
+}
+.form-check #remember {
+    position: relative;
+}
+form.user .btn-user {
+    font-size: 16px;
+    border-radius: 6px;
+    padding: 10px 12px 10px;
+}
+.action-btns.orderActions .btn-icon {
+    margin-right: 8px;
+}
+.action-btns.orderActions form{
+    margin: 0;
+}
+.badgecstm.new {
+    background: #007bff;
+    color: #ffffff;
+}
+.badgecstm.process {
+    background: #17a2b8;
+    color: #ffffff;
+}
+.badgecstm.delivered {
+    background: #28a745;
+    color: #ffffff;
+}
+.badgecstm.cancel {
+    background: #dc3545;
+    color: #ffffff;
+}
+nav.navbar ul.navbar-nav li a {
+    padding: 8px 12px 8px;
+}
