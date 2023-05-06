@@ -1,83 +1,182 @@
-<header class="header shop">
-    <!-- Topbar -->
-    <div class="topbar">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-12">
-                    <!-- Top Left -->
-                    <div class="top-left">
-                        <ul class="list-main">
-                            @php
-                                $settings=DB::table('settings')->get();
+@php $settings = DB::table('settings')->get(); @endphp
+<header id="header">
+    <div class="container">
+        <div class="topHeader">
+            <a href="mailto:@foreach($settings as $data) {{$data->email}} @endforeach">
+                <i class="fa fa-envelope-o"></i>
+                <span>Email: @foreach($settings as $data) {{$data->email}} @endforeach</span>
+             </a>
+            <a href="{{route('wishlist')}}">
+                <i class="fa fa-heart-o"></i>
+                <span>My Wishlist (<span class="wishListCount">{{Helper::wishlistCount()}}</span>)</span>
+            </a>
+        </div>
 
-                            @endphp
-                            <li><i class="ti-headphone-alt"></i>@foreach($settings as $data) {{$data->phone}} @endforeach</li>
-                            <li><i class="ti-email"></i> @foreach($settings as $data) {{$data->email}} @endforeach</li>
-                        </ul>
-                    </div>
-                    <!--/ End Top Left -->
+        <div class="bottomHeader">
+            <div class="leftHeader">
+                <div class="logo">
+                    <a href="{{route('home')}}">
+                        <img src="@foreach($settings as $data) {{$data->logo}} @endforeach" alt="logo">
+                    </a>
                 </div>
-                <div class="col-lg-6 col-md-6 col-12">
-                    <!-- Top Right -->
-                    <div class="right-content">
-                        <ul class="list-main">
-{{--                        <li><i class="ti-location-pin"></i> <a href="{{route('order.track')}}">Track Order</a></li>--}}
-                            {{-- <li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li> --}}
-                            @auth
-                                @if(Auth::user()->role=='admin')
-                                    <li><i class="ti-user"></i> <a href="{{route('admin')}}"  target="_blank">Dashboard</a></li>
-                                @else
-                                    <li><i class="ti-user"></i> <a href="{{route('user')}}"  target="_blank">Dashboard</a></li>
-                                @endif
-                                <li><i class="ti-power-off"></i> <a href="{{route('user.logout')}}">Logout</a></li>
+            </div>
+            <div class="midHeader">
+                <form class="search-form">
+                    <div class="searchWrapper">
+                        <input type="text" placeholder="Enter search title, keywords here" name="search">
+                        <button type="submit" class="searchIcon">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </form>
+                <ul class="searchBarNav">
+                    <li>
+                        <a href="#">Dress</a>
+                    </li>
+                    <li>
+                        <a href="#">Camping</a>
+                    </li>
+                    <li>
+                        <a href="#">RFID</a>
+                    </li>
+                    <li>
+                        <a href="#">Suspenders</a>
+                    </li>
+                    <li>
+                        <a href="#">Posture Corrector</a>
+                    </li>
 
-                            @else
-                                <li><i class="ti-power-off"></i><a href="{{route('login.form')}}">Login /</a> <a href="{{route('register.form')}}">Register</a></li>
-                            @endauth
-                        </ul>
-                        <div class="mobileHeader">
-                            <!-- Search Form -->
-                            <div class="search-top">
-                                <div class="top-search">
-                                    <a href="javascript:void(0)">
-                                        <i class="ti-search"></i>
-                                    </a>
-                                </div>
-                                <!-- Search Form -->
-                                <div class="searchTop">
-                                <span class="closeIcon">
-                                    <i class="ti-close"></i>
-                                </span>
-                                    <form class="search-form">
-                                        <input type="text" placeholder="Search here..." name="search">
-                                        <button value="search" type="submit"><i class="ti-search"></i></button>
-                                    </form>
-                                </div>
-                                <!--/ End Search Form -->
-                            </div>
-                            <!--/ End Search Form -->
-                            <div class="mobile-nav"></div>
+                    <li>
+                        <a href="#">Fountain</a>
+                    </li>
+                    <li>
+                        <a href="#">Jewelry Box</a>
+                    </li>
+                    <li>
+                        <a href="#">Picnic Blanket</a>
+                    </li>
+                    <li>
+                        <a href="#">BBQ</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="rightHeader">
+                @php
+                    $total_prod=0;
+                    $total_amount=0;
+                @endphp
+                @if(session('wishlist'))
+                    @foreach(session('wishlist') as $wishlist_items)
+                        @php
+                            $total_prod+=$wishlist_items['quantity'];
+                            $total_amount+=$wishlist_items['amount'];
+                        @endphp
+                    @endforeach
+                @endif
+                <div class="userInfo">
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user-o"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" data-popper-placement="bottom-start">
+                            <ul class="list-main">
+                                @auth
+                                    @if(Auth::user()->role=='admin')
+                                        <li>
+                                            <a href="{{route('admin')}}"  target="_blank">Dashboard</a>
+                                        </li>
+                                    @else
+                                        <li>
+                                            <a href="{{route('user')}}"  target="_blank">Dashboard</a>
+                                        </li>
+                                    @endif
+                                    <li>
+                                        <a href="{{route('user.logout')}}">Logout</a>
+                                    </li>
+                                @else
+                                    <li>
+                                        <a href="{{route('login.form')}}">Sign In</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('register.form')}}">Register</a>
+                                    </li>
+                                @endauth
+                            </ul>
                         </div>
                     </div>
-                    <!-- End Top Right -->
+                </div>
+                <div class="cartInfo">
+                    <div class="cartList">
+                        <a href="{{route('cart')}}" class="cartIcon">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            <span class="total-count">{{Helper::cartCount()}}</span>
+                        </a>
+                        @auth
+                            <div class="shopping-item">
+                                @if(count(Helper::getAllProductFromCart()) != 0)
+                                <div class="dropdown-cart-header">
+                                    <a href="{{route('cart')}}">View Cart</a>
+                                    <span>{{count(Helper::getAllProductFromCart())}} Items</span>
+                                </div>
+                                <ul class="shopping-list">
+                                    {{-- {{Helper::getAllProductFromCart()}} --}}
+                                    @foreach(Helper::getAllProductFromCart() as $data)
+                                        @php
+                                            $photo=explode(',',$data->product['photo']);
+                                        @endphp
+                                        <li>
+                                            <a class="cart-img" href="#"><img src="{{$photo[0]}}" alt="{{$photo[0]}}"></a>
+                                            <h4>
+                                                <a href="{{route('product-detail',$data->product['slug'])}}" target="_blank">{{$data->product['title']}}</a>
+                                                <p class="quantity">{{$data->quantity}} x - <span class="amount">${{number_format($data->price,2)}}</span></p>
+                                            </h4>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                                <div class="bottom">
+                                    <div class="total">
+                                        <a href="{{route('cart-delete',$data->id)}}" class="remove" title="Remove this item">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                        <div class="totalCartPrice">
+                                            <span>Total</span>
+                                            <span class="total-amount">${{number_format(Helper::totalCartPrice(),2)}}</span>
+                                        </div>
+                                    </div>
+                                    <a href="{{route('checkout')}}" class="btn customBlueBtn">Checkout</a>
+                                </div>
+                            </div>
+                        @else
+                            <div class="emptyCart">
+                                <p>The Shopping Cart is Empty!</p>
+                                <a href="">
+                                    <span>Go Shopping</span>
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        @endif
+                        @endauth
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
+</header>
+
+
+
+
+<header class="header shop">
+    <!-- Topbar -->
+
     <!-- End Topbar -->
     <div class="middle-inner">
         <div class="container">
             <div class="headerWrapper">
-                <div class="logoWrapper">
-                    <!-- Logo -->
-                    <div class="logo">
-                        @php
-                            $settings=DB::table('settings')->get();
-                        @endphp
-                        <a href="{{route('home')}}"><img src="@foreach($settings as $data) {{$data->logo}} @endforeach" alt="logo"></a>
-                    </div>
-                    <!--/ End Logo -->
-                </div>
+
                 <div class="SearchBarWrapper">
                     <div class="search-bar-top">
                         <div class="search-bar">
