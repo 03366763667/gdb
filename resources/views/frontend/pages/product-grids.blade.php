@@ -10,8 +10,20 @@
                 <div class="col-12">
                     <div class="bread-inner">
                         <ul class="bread-list">
-                            <li><a href="index1.html">Home<i class="ti-arrow-right"></i></a></li>
-                            <li class="active"><a href="blog-single.html">Shop Grid</a></li>
+                            <li>
+                                <a href="index1.html">
+                                    <span class="crumbText">
+                                        Home
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="blog-single.html">
+                                    <span class="crumbText">
+                                        Shop Grid
+                                    </span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -19,6 +31,18 @@
         </div>
     </div>
     <!-- End Breadcrumbs -->
+
+    <div class="sidebarLayout">
+        <aside class="sideBar">
+            <div class="sidebarNav">
+                <h4>Categories</h4>
+                <ul>
+                    <li></li>
+                </ul>
+            </div>
+        </aside>
+        <div class="sidebarContent"></div>
+    </div>
 
     <!-- Product Style -->
     <form action="{{route('shop.filter')}}" method="POST">
