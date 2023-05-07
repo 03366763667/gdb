@@ -22,7 +22,9 @@
 	<!-- Header -->
 	@include('frontend.layouts.header')
 	<!--/ End Header -->
-	@yield('main-content')
+    <div class="main-wrapper">
+	    @yield('main-content')
+    </div>
 
 	@include('frontend.layouts.footer')
 
