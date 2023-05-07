@@ -149,7 +149,7 @@
                         @else
                             <div class="emptyCart">
                                 <p>The Shopping Cart is Empty!</p>
-                                <a href="">
+                                <a href="{{route('product-grids')}}">
                                     <span>Go Shopping</span>
                                     <i class="fa fa-chevron-right" aria-hidden="true"></i>
                                     <i class="fa fa-chevron-right" aria-hidden="true"></i>
@@ -162,8 +162,19 @@
                 </div>
             </div>
         </div>
-
     </div>
+    <div class="menuNanBar">
+        <ul>
+            <li><a href="#">New Arrival</a></li>
+            <li><a href="#">Home & Garden</a></li>
+            <li><a href="#">Sports & Outdoor</a></li>
+            <li><a href="#">Health & beauty</a></li>
+            <li><a href="#">Clothing & Fashion</a></li>
+            <li><a href="#">Toys & Games</a></li>
+            <li><a href="#">Electronics</a></li>
+        </ul>
+    </div>
+
 </header>
 
 

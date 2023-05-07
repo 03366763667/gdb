@@ -37,7 +37,7 @@ button:active{
 /* main css */
 .topHeader{
     text-align: right;
-    margin: 0 0 20px;
+    margin: 0 0 15px;
     padding: 10px 0 10px;
 }
 .topHeader a {
@@ -61,12 +61,16 @@ button:active{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin: 0 0 15px;
 }
 .leftHeader {
     width: 250px
 }
 .logo {
     max-width: 80px;
+}
+.logo a img {
+    width: 100%;
 }
 .midHeader {
     margin: 0 20px;
@@ -298,7 +302,7 @@ button:active{
 }
 .customBlueBtn {
     padding: 8px 14px;
-    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
     border-radius: 6px;
     font-weight: 500;
     font-size: 14px;
@@ -314,6 +318,7 @@ button:active{
 }
 .shopping-item .bottom .customBlueBtn{
     font-size: 14px;
+    color: #FFFFFF;
 }
 .shopping-item .bottom .customBlueBtn:hover{
     color: #FFFFFF;
@@ -345,7 +350,31 @@ button:active{
 .emptyCart a i:last-of-type{
     margin: 0;
 }
-
+.menuNanBar {
+    position: relative;
+    background: #01adef;
+    border-bottom: 1px solid #f1f2f4;
+    border-radius: 5px 5px 0 0;
+    padding: 0 28px;
+}
+.menuNanBar ul {
+    display: flex;
+    align-items: center;
+}
+.menuNanBar ul li{
+    margin-right: 56px;
+}
+.menuNanBar ul li:last-of-type{
+    margin:0;
+}
+.menuNanBar ul li a {
+    font-size: 13px;
+    letter-spacing: 0.8px;
+    display: block;
+    padding: 16px 0 16px;
+    text-shadow: 0 0 1px #88898b;
+    color: #FFFFFF;
+}
 
 
 /* today */
@@ -354,7 +383,9 @@ button:active{
 }
 .breadcrumbs {
     background: #ffffff;
-    padding: 10px 0 10px;
+    padding: 10px 5px 10px;
+    border: 1px solid #dcdddf;
+    border-bottom: 0;
 }
 .bread-list {
     display: flex;
@@ -420,4 +451,233 @@ button:active{
     position: absolute;
     top: -2px;
     left: -1px;
+}
+.sidebarLayout {
+    display: flex;
+    align-items: flex-start;
+}
+.stickyHeader .sideBar {
+    position: sticky;
+    left: 0;
+    top: 0;
+}
+aside.sideBar {
+    width: 240px;
+    border: 1px solid #dcdddf;
+    background: #FFFFFF;
+    margin-right: 10px;
+}
+.sidebarNav h4 {
+    background: #eee;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    color: #eb1c24;
+    font-size: 16px;
+    line-height: 20px;
+    border-bottom: 1px solid #dcdddf;
+    padding: 10px 5px 10px;
+}
+.sidebarNav ul li:first-child{
+    border-top: 0;
+}
+.sidebarNav ul li:last-of-type{
+    border-bottom: 0;
+}
+.sidebarNav ul li{
+    padding: 10px 10px 10px;
+    border: 1px dotted #dcddcf;
+    position: relative;
+}
+.sidebarNav ul li a {
+    font-size: 12px;
+    line-height: 16px;
+    color: #666769;
+    font-weight: 500;
+    display: inline-block;
+}
+.sidebarNav ul li a:hover,
+.sidebarNav ul li i:hover{
+    color: #eb1c24;
+}
+.sidebarNav ul li i{
+    cursor: pointer;
+}
+.openSubCategory {
+    position: absolute;
+    right: 10px;
+}
+.openSubCategory i{
+    transition: all .3s ease;
+}
+.openSubCategory.rotateIcon i {
+    transform: rotate(180deg);
+    transition: all .3s ease;
+}
+.sidebarNav .subCategoriesWrapper{
+    display: none;
+}
+.sidebarNav .subCategoriesWrapper li {
+    border: 0;
+}
+.sidebarNav .subCategoriesWrapper li a{
+    display: block;
+}
+.sidebarContent {
+    width: calc(100% - 250px);
+}
+.filterBar {
+    border: 1px solid #dcdddf;
+    padding: 7px 5px;
+    color: #77787a;
+    border-bottom: none;
+    background: #eee;
+    display: flex;
+    align-items: center;
+}
+.girdView {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+.girdView span {
+    font-size: 12px;
+    line-height: 16px;
+    display: block;
+    margin-right: 10px;
+}
+.girdView ul {
+    display: flex;
+    align-items: center;
+}
+.girdView ul li {
+    margin-right: 10px;
+}
+.girdView ul li.active a {
+    color: #eb1c24;
+}
+.ProductListing {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.productBox {
+    position: relative;
+    padding: 10px;
+    border: 1px solid #dcdddf;
+    width: 25%;
+    height: 370px;
+    background: #ffffff;
+}
+.productBox:hover{
+    box-shadow: 0px 3px 10px #dcddcf;
+}
+.productImg {
+    margin: 0 0 10px;
+}
+.productImg img {
+    width: 100%;
+}
+.productContent h4{
+    margin: 0 0 10px;
+}
+.productContent h4 a{
+    font-size: 12px;
+    color: #666769;
+    line-height: 15px;
+    text-align: left;
+}
+.productContent h4 a:hover{
+    color: #01adef;
+}
+.productPrice {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+    letter-spacing: -0.5px;
+    margin: 0 0 10px;
+}
+.productBox:hover .productBtns{
+    opacity: 1;
+    visibility: visible;
+}
+.productBtns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    top: 17px;
+    opacity: 0;
+    visibility: hidden;
+}
+.productBtns .ProductStock,
+.productBtns .customBlueBtn{
+    display: inline-block;
+    letter-spacing: -0.2px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    border: 1px solid #01adef;
+    padding: 6px 14px;
+    text-align: center;
+    color: #01adef;
+    font-size: 11px;
+    white-space: nowrap;
+    box-shadow: none;
+    font-weight: 400;
+    line-height: 11px;
+}
+.productBtns .customBlueBtn{
+    color: #FFFFFF;
+    background: #01adef;
+}
+.productBtns .customBlueBtn:hover{
+    color: #01adef;
+    background: transparent;
+    border-color: #01adef;
+}
+.productCart {
+    font-size: 24px;
+    display: inline-block;
+}
+
+
+
+
+
+
+/* footer */
+footer#footer {
+    background: #f5f6f8;
+    color: #333436;
+    padding: 40px 0 40px;
+}
+.footerContent h4 {
+    font-size: 14px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    position: relative;
+}
+.footerContent h4:after {
+    content: '';
+    width: 180px;
+    height: 1px;
+    display: block;
+    background: #333436;
+    position: relative;
+    bottom: -10px;
+}
+.footerContent ul li{
+    margin: 0 0 10px;
+}
+.footerContent ul li:last-of-type{
+    margin: 0;
+}
+.footerContent ul li,
+.footerContent ul li a {
+    color: #333436;
+    font-size: 12px;
+    line-height: 16px;
+}
+.footerContent ul li a:hover{
+    color: #eb1c24;
 }
