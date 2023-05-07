@@ -162,8 +162,19 @@
                 </div>
             </div>
         </div>
-
     </div>
+    <div class="menuNanBar">
+        <ul>
+            <li><a href="#">New Arrival</a></li>
+            <li><a href="#">Home & Garden</a></li>
+            <li><a href="#">Sports & Outdoor</a></li>
+            <li><a href="#">Health & beauty</a></li>
+            <li><a href="#">Clothing & Fashion</a></li>
+            <li><a href="#">Toys & Games</a></li>
+            <li><a href="#">Electronics</a></li>
+        </ul>
+    </div>
+
 </header>
 
 
