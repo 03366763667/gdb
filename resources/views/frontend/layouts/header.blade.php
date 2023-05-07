@@ -149,7 +149,7 @@
                         @else
                             <div class="emptyCart">
                                 <p>The Shopping Cart is Empty!</p>
-                                <a href="">
+                                <a href="{{route('product-grids')}}">
                                     <span>Go Shopping</span>
                                     <i class="fa fa-chevron-right" aria-hidden="true"></i>
                                     <i class="fa fa-chevron-right" aria-hidden="true"></i>
