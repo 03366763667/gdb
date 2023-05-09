@@ -35,6 +35,10 @@ button:active{
 }
 
 /* main css */
+.main-wrapper {
+    background: #f5f6f8;
+    min-height: calc(100vh - 420px);
+}
 .topHeader{
     text-align: right;
     margin: 0 0 15px;
@@ -312,6 +316,7 @@ button:active{
     border: 1px solid #01adef;
     display: block;
     text-align: center;
+    cursor: pointer;
 }
 .customBlueBtn:hover{
     color: #FFFFFF;
@@ -353,7 +358,6 @@ button:active{
 .menuNanBar {
     position: relative;
     background: #01adef;
-    border-bottom: 1px solid #f1f2f4;
     border-radius: 5px 5px 0 0;
     padding: 0 28px;
 }
@@ -376,8 +380,135 @@ button:active{
     color: #FFFFFF;
 }
 
+/* Login / register */
+.loginFormWrapper {
+    margin: 30px 0 0;
+    background: #FFFFFF;
+}
+.loginFormRight {
+    border: 1px solid #dcddcf;
+    padding: 20px 15px 20px;
+}
+.loginFormWrapper h2 {
+    text-align: center;
+    font-size: 18px;
+    color: #eb1c24;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+.loginFormRight form.form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+label{
+    position: relative;
+}
+.form-group{
+    margin-bottom: 15px;
+}
+.form-group label {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #4D506B;
+    display: inline-block;
+    margin-bottom: 6px;
+}
+label span {
+    width: 3px;
+    height: 3px;
+    background: #F06041;
+    display: block;
+    border-radius: 100%;
+    position: absolute;
+    top: 4px;
+    right: -6px;
+}
+.form-group input {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #242A41 !important;
+    border-radius: 3px !important;
+    padding: 8px 12px;
+    height: 36px;
+    border: 1px solid #D5D5E2;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+    background-color: #fff !important;
+    width: 100%;
+}
+.form-group input:focus{
+    border-color: #01adef;
+}
+.customLoginBtn {
+    position: relative;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 12px 12px 10px;
+    border: 1px solid #01adef;
+    display: inline-block;
+    background-color: #01adef;
+    color: #ffffff;
+    width: 100%;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+    cursor: pointer;
+    transition: all .3s ease;
+}
+.customLoginBtn:hover{
+    background-color: transparent;
+    color: #01adef;
+    transition: all .3s ease;
+}
+.loginFormRight .passwordWrapper{
+    margin-bottom: 15px;
+}
+.loginFormRight .passwordWrapper .lost-pass {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #4D506B;
+    display: inline-block;
+    margin-bottom: initial;
+}
+.loginFormRight .passwordWrapper .lost-pass:hover{
+    color: #01adef;
+}
+.loginFormLeft{
+    padding: 20px 15px 20px;
+}
+.loginFormLeft h2 {
+    text-align: left;
+}
+.loginFormLeft h3 {
+    color: #242A41;
+    font-style: italic;
+    font-weight: 500;
+    margin: 0 0 10px;
+    font-size: 14px;
+}
+.loginFormLeft p {
+    line-height: 18px;
+}
+.creatAccount {
+    border: 1px solid #555555;
+    display: inline-block;
+    text-align: center;
+    margin-top: 35px;
+    padding: 12px 10px 12px;
+    color: #555555;
+}
+.creatAccount:hover,
+.creatAccount:focus{
+    border-color: #01adef;
+    color: #01adef;
+}
 
-/* today */
+
+/* pages */
 .main-wrapper {
     background: #f5f6f8;
 }
@@ -385,7 +516,6 @@ button:active{
     background: #ffffff;
     padding: 10px 5px 10px;
     border: 1px solid #dcdddf;
-    border-bottom: 0;
 }
 .bread-list {
     display: flex;
@@ -552,8 +682,9 @@ aside.sideBar {
 .girdView ul li {
     margin-right: 10px;
 }
-.girdView ul li.active a {
+.girdView ul li a.active {
     color: #eb1c24;
+    pointer-events: none;
 }
 .ProductListing {
     display: flex;
@@ -639,10 +770,316 @@ aside.sideBar {
     font-size: 24px;
     display: inline-block;
 }
+.ProductListing.listViewData {
+    flex-direction: column;
+}
+.ProductListing.listViewData .productBox {
+    width: 100%;
+    display: flex;
+    height: auto;
+    border-bottom: 0;
+}
+.ProductListing.listViewData .productBox:last-of-type{
+    border: 1px solid #dcdddf;
+}
+.ProductListing.listViewData .productBox .productImg {
+    width: 200px;
+    margin: 0 15px 0 0;
+    border: 1px solid #dcdddf;
+}
+.ProductListing.listViewData .productBox .productContent {
+    padding-top: 20px;
+}
+.productBtns.listViewBtns {
+    display: none;
+}
+.ProductListing.listViewData .productBox .productBtns {
+    display: none;
+}
+.ProductListing.listViewData .productBox .productContent .productBtns.listViewBtns {
+    display: flex;
+    justify-content: flex-start;
+    opacity: 1;
+    visibility: visible;
+}
+.ProductListing.listViewData .productBox .productContent .productBtns.listViewBtns .ProductStock,
+.ProductListing.listViewData .productBox .productContent .productBtns.listViewBtns .customBlueBtn{
+    margin-right: 8px;
+}
+.detailProductWrapper {
+    display: flex;
+    margin: 0 0 30px;
+}
+.detailProductImg {
+    width: 50%;
+    border: 1px solid #dcdddf;
+    border-top: 0;
+}
+.detailProductImg img {
+    width: 100%;
+}
+.detailProductContent{
+    width: 50%;
+    padding: 20px 20px 20px;
+}
+.detailProductContent h2 {
+    font-size: 18px;
+    color: #000000;
+    line-height: 24px;
+    margin: 0 0 15px;
+    font-weight: 500;
+}
+.detailProductContent .rating {
+    display: flex;
+    margin: 0 0 15px;
+}
+.detailProductContent .rating li{
+    margin-right: 5px;
+}
+.detailProductPrice {
+    margin: 0 0 15px;
+}
+.detailProductPrice .price {
+    display: inline-block;
+    color: #77787a;
+}
+.detailProductPrice .discount {
+    font-size: 16px;
+    font-weight: 500;
+    color: #eb1c24;
+    display: inline-block;
+    margin-right:5px;
+}
+.productSize ul {
+    display: flex;
+    align-items: center;
+    margin: 0 0 15px;
+}
+.productSize ul li{
+    margin-right: 5px;
+}
+.productSize {
+    display: flex;
+    align-items: flex-start;
+}
+.featureHeading {
+    display: inline-block;
+    font-weight: 500;
+    color: #625d5e;
+    margin-right: 5px;
+    min-width: 85px;
+}
+.productStock{
+    margin: 0 0 15px;
+}
+.productStock .badge {
+    font-size: 12px;
+    padding: 3px 10px;
+    font-weight: 400;
+}
+.productQuantity {
+    display: flex;
+    align-items: flex-start;
+    margin: 0 0 15px;
+}
+.productQuantity .input-group .btn-number {
+    background: #01adef;
+    border: 0;
+    box-shadow: none;
+    outline: 0;
+    font-size: 12px;
+    padding: 6px 8px;
+}
+.productQuantity .input-group .input-number {
+    border: 1px solid #dcdddf;
+    font-size: 12px;
+    padding: 0 10px;
+    text-align: center;
+}
+.productQuantity .input-group .input-number:focus{
+    border-color: #01adef;
+}
+.detailProductCategory {
+    margin: 0 0 15px;
+}
+.detailProductBtns .add-to-cart {
+    margin: 40px 0 0;
+    display: flex;align-items: center;
+}
+.detailProductBtns .add-to-cart .customBlueBtn {
+    padding: 5px 14px 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    margin-right: 12px;
+}
+.detailProductBtns .add-to-cart .customBlueBtn:hover{
+    border-color: #01adef;
+    background: transparent;
+    color: #01adef;
+}
+.detailProductBtns .add-to-cart .customBlueBtn:focus{
+    border: 1px solid #01adef !important;
+}
+.detailProductBtns .add-to-cart a{
+    color: #eb1c24;
+}
+.detailProductBtns .add-to-cart a:hover{
+    color: #01adef;
+}
+.tabWrapper {
+    margin: 0 0 30px;
+}
+.tabWrapper ul.nav li a {
+    cursor: pointer;
+    float: left;
+    font-size: 15.5px;
+    color: #333436;
+    padding: 0 10px 10px;
+    border-bottom: 1px solid transparent;
+    margin-right: 4px;
+    display: inline-block;
+}
+.tabWrapper ul.nav li a:hover,
+.tabWrapper ul.nav li a.active{
+    color: #eb1c24;
+    border-color: #eb1c24;
+}
+.tabWrapper .panel-body {
+    padding: 20px 10px;
+    line-height: 25px;
+    color: #000000;
+}
+.tabWrapper .panel-body p{
+    color: #000000;
+}
+.relatedProducts h2 {
+    font-size: 20px;
+    color: #333436;
+    letter-spacing: -0.5px;
+    font-weight: 600;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    position: relative;
+}
+.relatedProducts h2:after{
+    content: '';
+    width: 250px;
+    height: 1px;
+    background: #dcddcf;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+#relatedProducts .productBox {
+    width: auto;
+    height: auto;
+}
+#relatedProducts .productBox .productImg {
+    width: 160px;
+}
+#relatedProducts .productBox .productBtns{
+    top: 0;
+}
+.owl-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#relatedProducts .owl-prev,
+#relatedProducts .owl-next {
+    background: #01adef;
+    padding: 10px 15px 10px 15px;
+}
 
 
 
 
+
+
+@media (min-width: 768px) {
+    .panel-heading {
+        display: none;
+    }
+    .panel {
+        border: none;
+        box-shadow: none;
+    }
+    .panel-collapse {
+        height: auto;
+    }
+    .panel-collapse.collapse {
+        display: block;
+    }
+}
+@media (max-width: 767px) {
+    .tab-content .tab-pane {
+        display: block;
+    }
+    .nav-tabs {
+        display: none;
+    }
+    .panel-title a {
+        display: block;
+    }
+    .panel {
+        margin: 0;
+        box-shadow: none;
+        border-radius: 0;
+        margin-top: -2px;
+    }
+    .tab-pane:first-child .panel {
+        border-radius: 5px 5px 0 0;
+    }
+    .tab-pane:last-child .panel {
+        border-radius: 0 0 5px 5px;
+    }
+}
+
+
+
+
+
+
+    /* pagination style */
+.paginationWrapper nav{
+    border: 1px solid #dcdddf;
+    padding: 7px 5px 7px;
+    text-align: right;
+    background: #eeeeee;
+}
+.pagination li{
+    margin-right: 4px;
+}
+.pagination li:last-of-type{
+    margin-right: 0;
+}
+.pagination li a,
+.pagination li.active span,
+.pagination li.disabled span{
+    color: #333436;
+    font-size: 12px;
+    line-height: 12px;
+    border-radius: 0 !important;
+    border: 1px solid #333436;
+    padding: 6px 10px 6px;
+}
+.pagination li a:hover{
+    border-color: #eb1c24;
+    color: #eb1c24;
+}
+.pagination li.active span{
+    background-color: #eb1c24 !important;
+    border-color: #eb1c24 !important;
+}
+.pagination li.disabled span{
+    background-color: rgba(108, 117, 125, 0.4) !important;
+    border-color: rgba(108, 117, 125, 0.4) !important;
+    color: #FFFFFF !important;
+}
 
 
 /* footer */

@@ -92,7 +92,7 @@ class FrontendController extends Controller
             $products->whereBetween('price',$price);
         }
 
-        $recent_products=Product::where('status','active')->orderBy('id','ASC')->get();
+        $recent_products=Product::where('status','active')->orderBy('id','ASC')->paginate(10);
         // Sort by number
         if(!empty($_GET['show'])){
             $products=$products->where('status','active')->paginate($_GET['show']);
