@@ -11,6 +11,7 @@ use App\Models\Cart;
 use App\Models\Brand;
 use App\User;
 use Auth;
+use Illuminate\Support\Carbon;
 use Session;
 use Newsletter;
 use DB;
@@ -31,13 +32,28 @@ class FrontendController extends Controller
         // return $banner;
         $products=Product::where('status','active')->orderBy('id','DESC')->limit(8)->get();
         $category=Category::where('status','active')->where('is_parent',1)->orderBy('title','ASC')->get();
+
+        // new products
+        $newProducts = Product::where(['status' =>'active', 'condition' => 'new'])->orderBy('id','DESC')->limit(12)->get();
+
+        // weekly products
+        $weeklyProducts = Product::whereBetween('created_at',
+            [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()]
+        )->orderBy('id','DESC')->limit(12)->get();
+
+        // hot products
+        $hotProducts = Product::where(['status' =>'active', 'condition' => 'hot'])->orderBy('id','DESC')->limit(12)->get();
+
         // return $category;
         return view('frontend.index')
                 ->with('featured',$featured)
                 ->with('posts',$posts)
                 ->with('banners',$banners)
                 ->with('product_lists',$products)
-                ->with('category_lists',$category);
+                ->with('category_lists',$category)
+                ->with('newProducts',$newProducts)
+                ->with('weeklyProducts',$weeklyProducts)
+                ->with('hotProducts',$hotProducts);
     }
 
     public function aboutUs(){
