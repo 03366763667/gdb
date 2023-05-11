@@ -30,7 +30,6 @@ input:active{
 button:focus,
 button:active{
     outline: 0 !important;
-    border: 0 !important;
     box-shadow: none !important;
 }
 
@@ -61,11 +60,11 @@ button:active{
 .topHeader a span.wishListCount {
     margin: 0;
 }
-.bottomHeader {
+.customHeader {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0 0 15px;
+    margin-bottom: 15px;
 }
 .leftHeader {
     width: 250px
@@ -318,15 +317,16 @@ button:active{
     text-align: center;
     cursor: pointer;
 }
-.customBlueBtn:hover{
-    color: #FFFFFF;
+.customBlueBtn:hover {
+    color: #01adef;
+    background: transparent;
 }
 .shopping-item .bottom .customBlueBtn{
     font-size: 14px;
     color: #FFFFFF;
 }
 .shopping-item .bottom .customBlueBtn:hover{
-    color: #FFFFFF;
+    color: #01adef  ;
 }
 .emptyCart {
     text-align: center;
@@ -431,7 +431,7 @@ label span {
     color: #242A41 !important;
     border-radius: 3px !important;
     padding: 8px 12px;
-    height: 36px;
+    height: 30px;
     border: 1px solid #D5D5E2;
     box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
     background-color: #fff !important;
@@ -439,6 +439,11 @@ label span {
 }
 .form-group input:focus{
     border-color: #01adef;
+}
+.form-group .text-danger {
+    color: #dc3545!important;
+    font-size: 12px;
+    line-height: 12px;
 }
 .customLoginBtn {
     position: relative;
@@ -635,8 +640,6 @@ label span {
     height: auto;
 }
 .tabDetailWrapper .productBox .productBtns {
-    opacity: 1;
-    visibility: visible;
     top: 0;
 }
 .tabDetailWrapper .productBox .productBtns .productCart{
@@ -661,7 +664,7 @@ label span {
 
 .breadcrumbs {
     background: #ffffff;
-    padding: 10px 5px 10px;
+    padding: 10px 10px 10px;
     border: 1px solid #dcdddf;
 }
 .bread-list {
@@ -680,6 +683,9 @@ label span {
     display: block;
 }
 .bread-list li a:hover{
+    color: #01adef;
+}
+.bread-list li.active a {
     color: #01adef;
 }
 .bread-list li a:hover .crumbText,
@@ -1173,50 +1179,175 @@ aside.sideBar {
 
 
 
-
-
-@media (min-width: 768px) {
-    .panel-heading {
-        display: none;
-    }
-    .panel {
-        border: none;
-        box-shadow: none;
-    }
-    .panel-collapse {
-        height: auto;
-    }
-    .panel-collapse.collapse {
-        display: block;
-    }
+/* cart */
+.cart-section {
+    padding: 30px 15px 30px;
+    background: #FFFFFF;
+    margin-bottom: 10px;
 }
-@media (max-width: 767px) {
-    .tab-content .tab-pane {
-        display: block;
-    }
-    .nav-tabs {
-        display: none;
-    }
-    .panel-title a {
-        display: block;
-    }
-    .panel {
-        margin: 0;
-        box-shadow: none;
-        border-radius: 0;
-        margin-top: -2px;
-    }
-    .tab-pane:first-child .panel {
-        border-radius: 5px 5px 0 0;
-    }
-    .tab-pane:last-child .panel {
-        border-radius: 0 0 5px 5px;
-    }
+.cart-section h2 {
+    text-align: center;
+    color: #eb1c24;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 20px;
+}
+.emptyCartWrap {
+    text-align: center;
+}
+.emptyCartWrap .emptyCartIcon {
+    display: block;
+    font-size: 100px;
+    margin: 0 0 40px;
+}
+.emptyCartWrap p {
+    color: #77787a;
+    font-size: 12px;
+}
+.emptyCartWrap p a{
+    color: #01adef;
+    text-decoration: underline;
+    font-weight: 500;
+}
+.emptyCartWrap p a:hover{
+    color: #eb1c24;
+}
+.recentlyAddedSection {
+    padding: 30px 15px 30px;
+    background: #ffffff;
+    margin-bottom: 10px;
+}
+.recentlyAddedSection h2 {
+    color: #77787a;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 15px;
+    position: relative;
+}
+.recentlyAddedSection h2 span{
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+.recentlyAddedSection h2 span:after{
+    content: '';
+    width: 100%;
+    height: 1px;
+    background: #77787a;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.cartProductImage {
+    max-width: 80px;
+}
+.cartProductImage img{
+    width: 100%;
+}
+.input-group.cartInput input.input-number {
+    width: 50px;
+    text-align: center;
 }
 
-
-
-
+.plusMinusBtns .btn {
+    background: transparent;
+    color: #88898b;
+    border: 1px solid #88898b;
+    opacity: 1;
+    margin: 0 0 4px 4px;
+}
+.plusMinusBtns .btn:last-of-type{
+    margin-bottom: 0;
+}
+a.cartDelete:hover{
+    color: #eb1c24;
+}
+.coupon form {
+    display: flex;
+    align-items: flex-start;
+}
+.coupon input {
+    display: inline-block;
+    width: auto;
+}
+.coupon .customBlueBtn{
+    font-size: 12px;
+    padding: 8px 12px 8px;
+    min-width: 70px;
+    margin-left: 8px;
+}
+.checkoutFromSection {
+    padding: 20px 10px 20px;
+    background: #ffffff;
+}
+.checkoutFromSection h2 {
+    text-align: left;
+    color: #eb1c24;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+.customSelect .nice-select {
+    float: none;
+    border: 1px solid #D5D5E2;
+    height: 30px;
+    padding: 0 12px 0;
+    margin-bottom: 15px;
+}
+.customSelect .nice-select ul.list {
+    width: 100%;
+    border: 1px solid #D5D5E2;
+}
+.customSelect .nice-select ul.list li {
+    padding: 3px 12px 3px;
+    line-height: 20px;
+    min-height: auto;
+    font-weight: 400;
+    font-size: 12px;
+}
+.customSelect .nice-select .current {
+    font-size: 12px;
+}
+.checkoutDetails ul li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.checkoutDetails ul li:last-of-type{
+    margin-bottom: 0;
+}
+.cartDetailValue {
+    color: #01adef;
+    font-weight: 500;
+}
+.single-widget {
+    border: 1px solid #D5D5E2;
+    padding: 10px 10px 10px;
+    margin-bottom: 20px;
+}
+.checkbox .form-group{
+    margin-bottom: 10px;
+    display: flex;
+}
+.checkbox .form-group input {
+    height: auto;
+    display: inline-block;
+    width: auto;
+    margin-right: 8px;
+}
+.checkbox .form-group label{
+    margin-bottom: 0 !important;
+}
+.checkoutDetails ul li .customSelect{
+    width: 45%;
+}
+.checkoutDetails ul li .customSelect .nice-select{
+    margin-bottom: 0;
+}
 
 
     /* pagination style */
