@@ -151,12 +151,12 @@
                                         @endphp
                                         @if(session('coupon'))
                                             <li class="last"  id="order_total_price">
-                                                <span>Total</span>
+                                                Total
                                                 <span class="cartDetailValue">${{number_format($total_amount,2)}}</span>
                                             </li>
                                         @else
                                             <li class="last" id="order_total_price">
-                                                <span>Total</span>
+                                                Total
                                                 <span class="cartDetailValue">${{number_format($total_amount,2)}}</span>
                                             </li>
                                         @endif

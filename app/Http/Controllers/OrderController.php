@@ -7,6 +7,7 @@ use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Shipping;
 use App\User;
+use Illuminate\Support\Facades\Session;
 use PDF;
 use Notification;
 use Helper;
@@ -56,6 +57,8 @@ class OrderController extends Controller
             'email'=>'string|required'
         ]);
         // return $request->all();
+
+        $shipping_id = $request->shipping;
 
         if(empty(Cart::where('user_id',auth()->user()->id)->where('order_id',null)->first())){
             request()->session()->flash('error','Cart is Empty !');
@@ -147,7 +150,8 @@ class OrderController extends Controller
             return redirect()->route('payment')->with(['id'=>$order->id]);
         }
         else if(request('payment_method')=='stripe'){
-            return redirect()->route('stripe')->with(['id'=>$order->id]);
+//            return redirect()->route('stripe')->with(['id'=>$order->id]);
+            return view('stripe')->with(['id'=>$order->id, 'shipping_id' => $shipping_id]);
         }
         else{
             session()->forget('cart');

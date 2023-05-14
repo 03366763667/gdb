@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Product;
+use App\Models\Shipping;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Stripe;
@@ -29,6 +30,8 @@ class StripePaymentController extends Controller
     {
         $cart = Cart::where('user_id',auth()->user()->id)->where('order_id',null)->get()->toArray();
 
+        $shippingPrice = Shipping::where('id',$request->shipping_id)->first();
+
         $data['items'] = array_map(function ($item) use($cart) {
             $name=Product::where('id',$item['product_id'])->pluck('title');
             return [
@@ -49,6 +52,8 @@ class StripePaymentController extends Controller
             $total += $item['price']*$item['qty'];
         }
 
+        $totalAmount = $total + $shippingPrice['price'];
+
         $data['total'] = $total;
         if(session('coupon')){
             $data['shipping_discount'] = session('coupon')['value'];
@@ -57,14 +62,23 @@ class StripePaymentController extends Controller
 
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET', 'sk_test_51DIwDyJE1LlGBr2sOwyCXECgEaKdHtVoTKDlB9LOKPi6jPUbdNjDYVBbPbUhSNRZ08VAyCz04x9LgG236Fbjk3h4009MIZWyiD'));
 
-
         $response = Stripe\Charge::create ([
-            "amount" => $cart[0]['amount'] * 100,
+            "amount" => $totalAmount * 100,
             "currency" => "AUD",
             "source" => $request->stripeToken,
             "description" => "Payment Success"
         ]);
 
-        return redirect()->away($response);
+        if ($response){
+            $cart = Cart::where('user_id',auth()->user()->id)->where('order_id',null)->get();
+
+            foreach ($cart as $cartVal){
+                Cart::destroy($cartVal->id);
+            }
+        }
+
+        Session::flash('success', 'Payment successful!');
+
+        return redirect()->route('home');
     }
 }

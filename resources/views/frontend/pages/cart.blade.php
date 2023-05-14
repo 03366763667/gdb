@@ -103,6 +103,10 @@
                     </table>
                 </div>
 
+                <div class="checkoutBtn">
+                    <a href="{{route('checkout')}}" class="btn customBlueBtn">Checkout</a>
+                </div>
+
                 <div class="coupon">
                     <form action="{{route('coupon-store')}}" method="POST">
                         @csrf
@@ -133,7 +137,7 @@
             <div class="tabDetailWrapper">
                 <div class="row">
                     @foreach(Helper::getLatestProduct() as $key => $product)
-                        <div class="col col-md-4 col-lg-3 col-xl-2">
+                        <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                             <div class="productBox">
                                 <div class="productImg">
                                     <a href="{{route('product-detail',$product->slug)}}">
@@ -170,62 +174,6 @@
         </section>
 
     </div>
-
-
-	<!-- Shopping Cart -->
-	<div class="shopping-cart section">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<!-- Total Amount -->
-					<div class="total-amount">
-						<div class="row">
-							<div class="col-lg-8 col-md-5 col-12">
-								<div class="left">
-
-									{{-- <div class="checkbox">`
-										@php
-											$shipping=DB::table('shippings')->where('status','active')->limit(1)->get();
-										@endphp
-										<label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox" onchange="showMe('shipping');"> Shipping</label>
-									</div> --}}
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-7 col-12">
-								<div class="right">
-									<ul>
-										<li class="order_subtotal" data-price="{{Helper::totalCartPrice()}}">Cart Subtotal<span>${{number_format(Helper::totalCartPrice(),2)}}</span></li>
-
-										@if(session()->has('coupon'))
-										<li class="coupon_price" data-price="{{Session::get('coupon')['value']}}">You Save<span>${{number_format(Session::get('coupon')['value'],2)}}</span></li>
-										@endif
-										@php
-											$total_amount=Helper::totalCartPrice();
-											if(session()->has('coupon')){
-												$total_amount=$total_amount-Session::get('coupon')['value'];
-											}
-										@endphp
-										@if(session()->has('coupon'))
-											<li class="last" id="order_total_price">You Pay<span>${{number_format($total_amount,2)}}</span></li>
-										@else
-											<li class="last" id="order_total_price">You Pay<span>${{number_format($total_amount,2)}}</span></li>
-										@endif
-									</ul>
-									<div class="button5">
-										<a href="{{route('checkout')}}" class="btn">Checkout</a>
-										<a href="{{route('product-grids')}}" class="btn">Continue shopping</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!--/ End Total Amount -->
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!--/ End Shopping Cart -->
 
 	<!-- Start Shop Newsletter  -->
 {{--	@include('frontend.layouts.newsletter')--}}

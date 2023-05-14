@@ -74,7 +74,7 @@ class FrontendController extends Controller
         $products=Product::query();
 
         $categories = new Category();
-        $productCategory = $categories->getAllParentWithChild();
+        $productCategory = $categories->getAllParentCategoryWithChild();
 
         if(!empty($_GET['category'])){
             $slug=explode(',',$_GET['category']);
@@ -219,15 +219,19 @@ class FrontendController extends Controller
             }
     }
     public function productSearch(Request $request){
-        $recent_products=Product::where('status','active')->orderBy('id','DESC')->limit(3)->get();
+        $recent_products = Product::where('status','active')->orderBy('id','DESC')->paginate(10);
+        $categories = new Category();
+        $productCategory = $categories->getAllParentCategoryWithChild();
+
         $products=Product::orwhere('title','like','%'.$request->search.'%')
                     ->orwhere('slug','like','%'.$request->search.'%')
                     ->orwhere('description','like','%'.$request->search.'%')
                     ->orwhere('summary','like','%'.$request->search.'%')
                     ->orwhere('price','like','%'.$request->search.'%')
                     ->orderBy('id','DESC')
-                    ->paginate('9');
-        return view('frontend.pages.product-grids')->with('products',$products)->with('recent_products',$recent_products);
+                    ->paginate(10);
+
+        return view('frontend.pages.product-Search')->with(['products' => $products, 'productCategory' => $productCategory]);
     }
 
     public function productBrand(Request $request){
@@ -237,7 +241,7 @@ class FrontendController extends Controller
             return view('frontend.pages.product-grids')->with('products',$products->products)->with('recent_products',$recent_products);
         }
         else{
-            return view('frontend.pages.product-lists')->with('products',$products->products)->with('recent_products',$recent_products);
+            return view('frontend.pages.product-lists');
         }
 
     }
@@ -246,11 +250,14 @@ class FrontendController extends Controller
         // return $request->slug;
         $recent_products=Product::where('status','active')->orderBy('id','DESC')->limit(3)->get();
 
+        $categories = new Category();
+        $productCategory = $categories->getAllParentCategoryWithChild();
+
         if(request()->is('e-shop.loc/product-grids')){
-            return view('frontend.pages.product-grids')->with('products',$products->products)->with('recent_products',$recent_products);
+            return view('frontend.pages.product-grids')->with(['products' => $products->products, 'recent_products' => $recent_products, 'productCategory' => $productCategory]);
         }
         else{
-            return view('frontend.pages.product-lists')->with('products',$products->products)->with('recent_products',$recent_products);
+            return view('frontend.pages.product-lists')->with(['products' => $products->products, 'recent_products' => $recent_products, 'productCategory' => $productCategory]);
         }
 
     }
@@ -259,11 +266,14 @@ class FrontendController extends Controller
         // return $products;
         $recent_products=Product::where('status','active')->orderBy('id','DESC')->limit(3)->get();
 
+        $categories = new Category();
+        $productCategory = $categories->getAllParentCategoryWithChild();
+
         if(request()->is('e-shop.loc/product-grids')){
-            return view('frontend.pages.product-grids')->with('products',$products->sub_products)->with('recent_products',$recent_products);
+            return view('frontend.pages.product-grids')->with(['products' => $products->sub_products, 'recent_products' => $recent_products, 'productCategory' => $productCategory]);
         }
         else{
-            return view('frontend.pages.product-lists')->with('products',$products->sub_products)->with('recent_products',$recent_products);
+            return view('frontend.pages.product-lists')->with(['products' => $products->sub_products, 'recent_products' => $recent_products, 'productCategory' => $productCategory]);
         }
 
     }

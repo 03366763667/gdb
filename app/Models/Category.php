@@ -26,7 +26,13 @@ class Category extends Model
         return $this->hasMany('App\Models\Category','parent_id','id')->where('status','active');
     }
     public static function getAllParentWithChild(){
+        return Category::with('child_cat')->where('is_parent',1)->where('status','active')->orderBy('title','ASC')->limit(7)->get();
+    }
+    public static function getAllParentCategoryWithChild(){
         return Category::with('child_cat')->where('is_parent',1)->where('status','active')->orderBy('title','ASC')->get();
+    }
+    public static function getAllCategoryForSubHeader(){
+        return Category::with('child_cat')->where('is_parent',1)->where('status','active')->orderBy('title','DESC')->limit(7)->get();
     }
     public function products(){
         return $this->hasMany('App\Models\Product','cat_id','id')->where('status','active');

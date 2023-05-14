@@ -22,7 +22,8 @@
                     </div>
                 </div>
                 <div class="midHeader">
-                    <form class="search-form">
+                    <form class="search-form" method="POST" action="{{route('product.search')}}">
+                        @csrf
                         <div class="searchWrapper">
                             <input type="text" placeholder="Enter search title, keywords here" name="search">
                             <button type="submit" class="searchIcon">
@@ -31,34 +32,11 @@
                         </div>
                     </form>
                     <ul class="searchBarNav">
-                        <li>
-                            <a href="#">Dress</a>
-                        </li>
-                        <li>
-                            <a href="#">Camping</a>
-                        </li>
-                        <li>
-                            <a href="#">RFID</a>
-                        </li>
-                        <li>
-                            <a href="#">Suspenders</a>
-                        </li>
-                        <li>
-                            <a href="#">Posture Corrector</a>
-                        </li>
-
-                        <li>
-                            <a href="#">Fountain</a>
-                        </li>
-                        <li>
-                            <a href="#">Jewelry Box</a>
-                        </li>
-                        <li>
-                            <a href="#">Picnic Blanket</a>
-                        </li>
-                        <li>
-                            <a href="#">BBQ</a>
-                        </li>
+                        @foreach(Helper::getAllCategoryForSubHeader() as $cat)
+                            <li>
+                                <a href="{{route('product-cat',$cat->slug)}}">{{$cat->title}}</a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="rightHeader">
@@ -161,19 +139,58 @@
                             @endauth
                         </div>
                     </div>
+                    <div class="mobileSearch">
+                        <i class="fa fa-search"></i>
+                        <div class="mobileSearchForm">
+                            <form class="search-form" method="POST" action="{{route('product.search')}}">
+                                @csrf
+                                <div class="searchWrapper">
+                                    <input type="text" placeholder="Enter search title, keywords here" name="search">
+                                    <button type="submit" class="searchIcon" style="display: none">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="mobileBtn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="menuNanBar">
-            <ul>
-                <li><a href="#">New Arrival</a></li>
-                <li><a href="#">Home & Garden</a></li>
-                <li><a href="#">Sports & Outdoor</a></li>
-                <li><a href="#">Health & beauty</a></li>
-                <li><a href="#">Clothing & Fashion</a></li>
-                <li><a href="#">Toys & Games</a></li>
-                <li><a href="#">Electronics</a></li>
-            </ul>
+            {{Helper::getHeaderCategory()}}
         </div>
     </div>
 </header>
+
+
+<!-- mobile fixed bar -->
+<div class="fixedBar">
+    <div class="container">
+        <ul>
+            <li>
+                <a href="{{route('product-grids')}}">
+                    <i class="fa fa-list" aria-hidden="true"></i>
+                    <span>Category</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('cart')}}">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    <span>Cart</span>
+                    <span class="total-count">{{Helper::cartCount()}}</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('login.form')}}">
+                    <i class="fa fa-user-o" aria-hidden="true"></i>
+                    <span>Sign In</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

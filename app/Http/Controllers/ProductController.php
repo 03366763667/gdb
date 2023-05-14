@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Brand;
 
 use Illuminate\Support\Str;
+use PhpParser\Node\Stmt\DeclareDeclare;
 
 class ProductController extends Controller
 {
@@ -50,6 +51,7 @@ class ProductController extends Controller
             'summary'=>'string|required',
             'description'=>'string|nullable',
             'photo'=>'string|required',
+            'productImages'=>'required',
             'size'=>'nullable',
             'stock'=>"required|numeric",
             'cat_id'=>'required|exists:categories,id',
@@ -62,24 +64,53 @@ class ProductController extends Controller
             'discount'=>'nullable|numeric'
         ]);
 
-        $data=$request->all();
-        $slug=Str::slug($request->title);
-        $count=Product::where('slug',$slug)->count();
+        $data = $request->all();
+
+        $slug = Str::slug($request->title);
+        $count = Product::where('slug',$slug)->count();
         if($count>0){
             $slug=$slug.'-'.date('ymdis').'-'.rand(0,999);
         }
-        $data['slug']=$slug;
-        $data['is_featured']=$request->input('is_featured',0);
-        $size=$request->input('size');
+//        $data['slug'] = $slug;
+//        $data['is_featured'] = $request->input('is_featured',0);
+
+        $size = $request->input('size');
         if($size){
-            $data['size']=implode(',',$size);
+            $size = implode(',',$size);
         }
         else{
-            $data['size']='';
+            $size = '';
         }
-        // return $size;
-        // return $data;
-        $status=Product::create($data);
+
+        $images = array();
+        if($files=$request->file('productImages')){
+            foreach($files as $file){
+                $name = $file->getClientOriginalName();
+                $file->move('productImages',$name);
+                $images[] = $name;
+            }
+        }
+
+        $status = Product::insert( [
+                'productImages'=>  implode("|",$images),
+                'title' => $data['title'],
+                'slug' => $slug,
+                'summary' => $data['summary'],
+                'description' => $data['description'],
+                'size' => $size,
+                'stock' => $data['stock'],
+                'photo' => $data['photo'],
+                'cat_id' => $data['cat_id'],
+                'brand_id' => $data['brand_id'],
+                'child_cat_id' => $data['child_cat_id'],
+                'is_featured' => $request->input('is_featured',0),
+                'status' => $data['status'],
+                'condition' => $data['condition'],
+                'price' => $data['price'],
+                'discount' => $data['discount'],
+            ]);
+
+//        $status=Product::create($data);
         if($status){
             request()->session()->flash('success','Product Successfully added');
         }
@@ -128,12 +159,13 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $product=Product::findOrFail($id);
+        $product = Product::findOrFail($id);
         $this->validate($request,[
             'title'=>'string|required',
             'summary'=>'string|required',
             'description'=>'string|nullable',
             'photo'=>'string|required',
+//            'productImages'=>'required',
             'size'=>'nullable',
             'stock'=>"required|numeric",
             'cat_id'=>'required|exists:categories,id',
@@ -146,17 +178,29 @@ class ProductController extends Controller
             'discount'=>'nullable|numeric'
         ]);
 
-        $data=$request->all();
+        $data = $request->all();
+
         $data['is_featured']=$request->input('is_featured',0);
-        $size=$request->input('size');
+        $size = $request->input('size');
         if($size){
             $data['size']=implode(',',$size);
         }
         else{
             $data['size']='';
         }
-        // return $data;
-        $status=$product->fill($data)->save();
+
+        $images = array();
+        if($files = $request->file('productImages')){
+            foreach($files as $file){
+                $name = $file->getClientOriginalName();
+                $file->move('productImages',$name);
+                $images[] = $name;
+            }
+        }
+        $data['productImages'] = implode("|",$images);
+
+        $status = $product->fill($data)->save();
+
         if($status){
             request()->session()->flash('success','Product Successfully updated');
         }
@@ -176,7 +220,7 @@ class ProductController extends Controller
     {
         $product=Product::findOrFail($id);
         $status=$product->delete();
-        
+
         if($status){
             request()->session()->flash('success','Product successfully deleted');
         }
