@@ -97,7 +97,7 @@ a.btn.btn-primary {
     border: 1px solid #EFF0F5;
 }
 .table tbody tr td{
-    padding: 0 16px 0;
+    padding: 0 12px 0;
     font-size: 12px;
     line-height: 1.428;
     color: #4D506B;
@@ -293,4 +293,7 @@ form.user .btn-user {
 }
 nav.navbar ul.navbar-nav li a {
     padding: 8px 12px 8px;
+}
+.loginCover img {
+    width: 100%;
 }

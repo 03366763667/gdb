@@ -113,7 +113,7 @@
                     <div class="row">
                         @if(!empty($newProducts))
                             @foreach($newProducts as $product)
-                                <div class="col col-md-4 col-lg-3 col-xl-2">
+                                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                                     <div class="productBox">
                                         <div class="productImg">
                                             <a href="{{route('product-detail',$product->slug)}}">
@@ -157,7 +157,7 @@
                     <div class="row">
                         @if(!empty($weeklyProducts))
                             @foreach($weeklyProducts as $product)
-                                <div class="col col-md-4 col-lg-3 col-xl-2">
+                                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                                     <div class="productBox">
                                         <div class="productImg">
                                             <a href="{{route('product-detail',$product->slug)}}">
@@ -201,7 +201,7 @@
                     <div class="row">
                         @if(!empty($hotProducts))
                             @foreach($hotProducts as $product)
-                                <div class="col col-md-4 col-lg-3 col-xl-2">
+                                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                                     <div class="productBox">
                                         <div class="productImg">
                                             <a href="{{route('product-detail',$product->slug)}}">
@@ -257,7 +257,7 @@
 
     $(document).ready(function (){
         $('.bannerSlider').owlCarousel({
-            loop: false,
+            loop: true,
             margin: 10,
             nav: false,
             autoplay: true,

@@ -5,7 +5,7 @@
 <div class="card">
     <h5 class="card-header">Add Product</h5>
     <div class="card-body">
-      <form method="post" action="{{route('product.store')}}">
+      <form method="post" action="{{route('product.store')}}" enctype="multipart/form-data">
         {{csrf_field()}}
         <div class="form-group">
           <label for="inputTitle" class="col-form-label">Title <span class="text-danger">*</span></label>
@@ -114,7 +114,7 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="inputPhoto" class="col-form-label">Photo <span class="text-danger">*</span></label>
+          <label for="inputPhoto" class="col-form-label">Featured Photo <span class="text-danger">*</span></label>
           <div class="input-group">
               <span class="input-group-btn">
                   <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn">
@@ -123,10 +123,22 @@
               </span>
           <input id="thumbnail" class="form-control" type="text" name="photo" value="{{old('photo')}}">
         </div>
-        <div id="holder" style="margin-top:15px;max-height:100px;"></div>
-          @error('photo')
-          <span class="text-danger">{{$message}}</span>
-          @enderror
+            <div id="holder" style="margin-top:15px;max-height:100px;"></div>
+            @error('photo')
+            <span class="text-danger">{{$message}}</span>
+            @enderror
+
+        </div>
+        <div class="form-group">
+            <label for="productImages" class="col-form-label">Product Images <span class="text-danger">*</span></label>
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn">
+                        <i class="fa fa-picture-o"></i> Choose
+                    </a>
+                </span>
+                <input id="productImages" type="file" class="form-control" name="productImages[]" multiple>
+            </div>
         </div>
 
         <div class="form-group">

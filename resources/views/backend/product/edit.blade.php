@@ -5,7 +5,7 @@
 <div class="card">
     <h5 class="card-header">Edit Product</h5>
     <div class="card-body">
-      <form method="post" action="{{route('product.update',$product->id)}}">
+      <form method="post" action="{{route('product.update',$product->id)}}" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
         <div class="form-group">
@@ -121,7 +121,7 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="inputPhoto" class="col-form-label">Photo <span class="text-danger">*</span></label>
+          <label for="inputPhoto" class="col-form-label">Featured Photo <span class="text-danger">*</span></label>
           <div class="input-group">
               <span class="input-group-btn">
                   <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn">
@@ -135,6 +135,21 @@
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
+
+          <div class="form-group">
+              <label for="productImages" class="col-form-label">Product Images <span class="text-danger">*</span></label>
+              <div class="input-group">
+                <span class="input-group-btn">
+                    <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn">
+                        <i class="fa fa-picture-o"></i> Choose
+                    </a>
+                </span>
+                  <input id="productImages" type="file" class="form-control" name="productImages[]" multiple>
+              </div>
+              @error('productImages')
+              <span class="text-danger">{{$message}}</span>
+              @enderror
+          </div>
 
         <div class="form-group">
           <label for="status" class="col-form-label">Status <span class="text-danger">*</span></label>

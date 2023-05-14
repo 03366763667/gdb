@@ -28,7 +28,7 @@
 
         <div class="loginFormWrapper">
             <div class="row">
-                <div class="col col-md-6 col-lg-7">
+                <div class="col-12 col-md-6">
                     <div class="loginFormRight">
                         <h2>Create an Account</h2>
                         <form class="form" method="post" action="{{route('register.submit')}}">
@@ -74,7 +74,7 @@
                     </div>
                 </div>
 
-                <div class="col col-md-6 col-lg-5">
+                <div class="col-12 col-md-6">
                     <div class="loginFormLeft">
                         <h3>Welcome to become a Godropship Member.</h3>
                         <p>You focus on sales, we help with dispatching. Everyone can become a seller and get profit easily.</p>

@@ -28,7 +28,7 @@
 
         <div class="loginFormWrapper">
             <div class="row">
-                <div class="col col-md-6 col-lg-7">
+                <div class="col-12 col-md-6">
                     <div class="loginFormRight">
                         <h2>Sign In</h2>
                         <form class="form" method="post" action="{{route('login.submit')}}">
@@ -62,7 +62,7 @@
                     </div>
                 </div>
 
-                <div class="col col-md-6 col-lg-5">
+                <div class="col-12 col-md-6">
                     <div class="loginFormLeft">
                         <h2>LOGIN OR CREATE AN ACCOUNT</h2>
                         <h3>NEW CUSTOMERS</h3>

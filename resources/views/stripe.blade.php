@@ -1,110 +1,139 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+@extends('frontend.layouts.master')
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+@section('title','Stripe Checkout page')
 
-    <style>
-        html,
-        body{
-            height: 100%;
-        }
-        .container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .stripePaymentWrapper {
-            width: 100%;
-            max-width: 600px;
-            margin: 30px auto 30px;
-        }
-    </style>
-
-</head>
-<body>
-
-<header id="stripeHeader">
-    <div class="container">
-        <div class="stripeLogo">
-            <img src="{{asset('backend/img/logo.png')}}" alt="">
-        </div>
-    </div>
-</header>
-
+@section('main-content')
 <div class="container">
-    <div class="stripePaymentWrapper">
-        <div class="panel panel-default credit-card-box">
-            <div class="panel-heading display-table" >
-                <h3 class="panel-title" >Payment Details</h3>
-            </div>
-            <div class="panel-body">
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+        <ul class="bread-list">
+            <li>
+                <a href="{{route('home')}}">
+                    <span class="crumbText">
+                        Home
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('checkout')}}">
+                    <span class="crumbText">
+                        Checkout
+                    </span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="{{route('stripe')}}">
+                    <span class="crumbText">
+                        Payment
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- End Breadcrumbs -->
+    <section class="paymentSection">
+        <h2>Payment Details </h2>
+        <div class="row justify-content-center">
+            <div class="col col-md-8 col-lg-6">
+                <div class="stripePaymentWrapper">
+                    <div class="panel panel-default credit-card-box">
+                        <div class="panel-heading display-table" >
+                            <h3 class="panel-title" >Payment Details</h3>
+                        </div>
+                        <div class="panel-body">
 
-                @if (Session::has('success'))
-                    <div class="alert alert-success text-center">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-                        <p>{{ Session::get('success') }}</p>
-                    </div>
-                @endif
+                            @if (Session::has('success'))
+                                <div class="alert alert-success text-center">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                                    <p>{{ Session::get('success') }}</p>
+                                </div>
+                            @endif
 
-                <form role="form" action="{{ route('stripe.post') }}" method="post" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="pk_test_cGwIdoLnp3RZ6YaqzjWbhFqk" id="payment-form">
-                    @csrf
-                    <div class='form-row row'>
-                        <div class='col-xs-12 form-group required'>
-                            <label class='control-label'>Name on Card</label>
-                            <input class='form-control' size='4' type='text'>
+{{--                            @dd($shipping_id)--}}
+
+                            <form role="form" action="{{ route('stripe.post') }}" method="post" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="pk_test_cGwIdoLnp3RZ6YaqzjWbhFqk" id="payment-form">
+                                @csrf
+                                <input type="hidden" name="shipping_id" value="{{$shipping_id}}">
+                                <div class="form-group required">
+                                    <label>Name on Card <span></span></label>
+                                    <input class='form-control' size='4' type='text' name="cardName">
+                                </div>
+                                <div class='form-group required'>
+                                    <label>Card Number <span></span></label>
+                                    <input autocomplete='off' class='form-control card-number' size='20' type='text' name="cardNumber">
+                                </div>
+
+                                <div class='form-row row'>
+                                    <div class='col-xs-12 col-md-4 form-group cvc required'>
+                                        <label>CVC <span></span></label>
+                                        <input autocomplete='off' class='form-control card-cvc' placeholder='ex. 311' size='4' type='text' name="cvc">
+                                    </div>
+                                    <div class='col-xs-12 col-md-4 form-group expiration required'>
+                                        <label>Expiration Month <span></span></label>
+                                        <input class='form-control card-expiry-month' placeholder='MM' size='2' type='text' name="expiryMonth">
+                                    </div>
+                                    <div class='col-xs-12 col-md-4 form-group expiration required'>
+                                        <label>Expiration Year <span></span></label>
+                                        <input class='form-control card-expiry-year' placeholder='YYYY' size='4' type='text' name="expiryYear">
+                                    </div>
+                                </div>
+
+                                <div class='form-row row'>
+                                    <div class='col-md-12 error form-group hide'>
+                                        <div class='alert-danger alert'>Please correct the errors and try again.</div>
+                                    </div>
+                                </div>
+
+                                <div class="payButtons">
+                                    <button class="btn btn-primary btn-lg btn-block" type="submit">Pay</button>
+                                </div>
+
+                            </form>
                         </div>
                     </div>
-
-                    <div class='form-row row'>
-                        <div class='col-xs-12 form-group card required'>
-                            <label class='control-label'>Card Number</label>
-                            <input autocomplete='off' class='form-control card-number' size='20' type='text'>
-                        </div>
-                    </div>
-
-                    <div class='form-row row'>
-                        <div class='col-xs-12 col-md-4 form-group cvc required'>
-                            <label class='control-label'>CVC</label>
-                            <input autocomplete='off' class='form-control card-cvc' placeholder='ex. 311' size='4' type='text'>
-                        </div>
-                        <div class='col-xs-12 col-md-4 form-group expiration required'>
-                            <label class='control-label'>Expiration Month</label>
-                            <input class='form-control card-expiry-month' placeholder='MM' size='2' type='text'>
-                        </div>
-                        <div class='col-xs-12 col-md-4 form-group expiration required'>
-                            <label class='control-label'>Expiration Year</label>
-                            <input class='form-control card-expiry-year' placeholder='YYYY' size='4' type='text'>
-                        </div>
-                    </div>
-
-                    <div class='form-row row'>
-                        <div class='col-md-12 error form-group hide'>
-                            <div class='alert-danger alert'>Please correct the errors and try again.</div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <button class="btn btn-primary btn-lg btn-block" type="submit">Pay</button>
-                        </div>
-                    </div>
-
-                </form>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 </div>
 
-</body>
-
+@endsection
+@push('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
 <script type="text/javascript">
+
+    $(document).ready(function (){
+        $("#payment-form").validate({
+            // Specify validation rules
+            rules: {
+                cardName: "required",
+                cardNumber: "required",
+                cvc: "required",
+                expiryMonth: "required",
+                expiryYear: "required",
+            },
+            messages: {
+                cardName: {
+                    required: "Please enter Candidate First Name",
+                },
+                cardNumber: {
+                    required: "Please enter Candidate Last Name",
+                },
+                cvc: {
+                    required: "Please select country",
+                },
+                expiryMonth: {
+                    required: "Please select state",
+                },
+                expiryYear: {
+                    required: "Please select state",
+                }
+            },
+
+        });
+    });
 
     $(function() {
 
@@ -172,4 +201,4 @@
 
     });
 </script>
-</html>
+@endpush

@@ -1,11 +1,20 @@
 $(document).ready(function (){
 
-//   mobile search bar
-    $('.top-search a').click(function (){
-        $('body').toggleClass('openSearchbar');
+    //  mobile nav
+    $('.mobileBtn').click(function (){
+        $(this).toggleClass('toggle-btn');
+        $('.menuNanBar').slideToggle();
     });
 
-    $('.closeIcon').click(function (){
-        $('body').removeClass('openSearchbar');
-    })
+    //  mobile search
+    $('.mobileSearch i').click(function (){
+        $('.mobileSearchForm').slideToggle();
+    });
+
+    //  mobile sub menu dropdown
+    $('.menuNanBar ul li .openSubCategory').click(function (){
+        $(this).parent().children('.dropdown.sub-dropdown').slideToggle();
+    });
+
+
 });
